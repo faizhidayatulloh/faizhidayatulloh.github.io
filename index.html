@@ -17,6 +17,12 @@
             background-position: center;
             background-size: cover;
         }
+        .tiga {
+            background-image: url('judul.jpg');
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: cover;
+        }
         /* class untuk juduk di bawah navigasi */
         .shadow-custom {
             box-shadow: 0px 1px 5px black;
@@ -26,28 +32,25 @@
         }
     </style>
 </head>
-<!-- isi -->
 <body>
 <!-- navigasi -->
-<nav class="navbar navbar-expand-sm bg-dark navbar-dark sticky-top p-3">
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="collapsibleNavbar">
-        <ul class="navbar-nav">
-          <li class="nav-item">
-            <a class="nav-link active" href="#">Beranda</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Artikel</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Pemesanan</a>
-          </li>    
+    <ul class="nav justify-content-center bg-dark sticky-top">
+      <li class="nav-item">
+        <a class="nav-link p-3" href="#">Beranda</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link p-3" href="#">Artikel</a>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link p-3 dropdown-toggle" data-bs-toggle="dropdown">Pemesanan</a>
+        <ul class="dropdown-menu bg-dark">
+          <li><a class="dropdown-item text-primary" href="#">Order Aqiqah</a></li>
+          <li><a class="dropdown-item text-primary" href="#">Order Catering</a></li>
         </ul>
-     </div>
-  </nav>
+      </li>
+    </ul>
 <!-- --------------------------------------------------------------------- -->
+<!-- isi -->
 <div class="text-center p-4 text-light satu">
     <blockquote class="blockquote">
         <p class="text-light fw-bold">Semua bayi tergadaikan dengan aqiqahnya, pada hari ketujuh, di sembelihkan untuknya (&nbsp;hewan&nbsp;Aqiqah&nbsp;), 
@@ -55,22 +58,27 @@
         </p>
         <footer class="blockquote-footer text-success text-bg-warning fs-4 fw-bold">Hadits Riwayat Abu Dawud</footer>
     </blockquote>
-    <!-- jasa aqiqah dan catering -->
-<div class="container-fluid">
-    <div class="row">
-        <div class="col-sm-6 shadow-custom p-4 bg-success text-start">
-            <ul class="fs-5 text-shadow-custom">
-                <li>Sesuai dengan syari'at Islam</li>
-                <li>Di kelola oleh para <strong>alumni Pesantren</strong> yang berpengalaman</li>
-                <li>Pengalaman Catering lebih dari 5 tahun</li>
-                <li>Hanya Mengambil kambing yang memenuhi syarat Aqiqah</li>
-                <li>Pengiriman ke seluruh wilayah Kebumen, Banyumas dan Purworejo</li>
-            </ul>
+    <!-- ----------------------------------------------------------------------- -->
+    <div class="container-fluid">
+        <div class="container w-50">
+          <img src="judul.png" class="mw-100">
         </div>
-        <div class="col-sm-6 p-4">halo</div>
+        </div>
+        <div class="row">
+            <div class="col-sm-6 shadow-custom p-4 bg-success text-start">
+                <ul class="fs-5 text-shadow-custom">
+                    <li>Sesuai dengan syari'at Islam</li>
+                    <li>Di kelola oleh para <strong>alumni Pesantren</strong> yang berpengalaman</li>
+                    <li>Pengalaman Catering lebih dari 5 tahun</li>
+                    <li>Hanya Mengambil kambing yang memenuhi syarat Aqiqah</li>
+                    <li>Pengiriman ke seluruh wilayah Kebumen, Banyumas dan Purworejo</li>
+                </ul>
+            </div>
+            <div class="col-sm-6 p-4">halo</div>
+        </div>
     </div>
 </div>
-</div>
+<!-- ----------------------------------------------------- -->
 <!-- div men tambah duwur -->
 <div style="height: 3000px;"></div>
 
