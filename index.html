@@ -30,22 +30,28 @@
         .text-shadow-custom {
             text-shadow: 0 0 5px black;
         }
+        .nav-link-custom:hover {
+          background-color: gray;
+        }
+        .active-custom {
+          background-color: gray;
+        }
     </style>
 </head>
 <body>
 <!-- navigasi -->
     <ul class="nav justify-content-center bg-dark sticky-top">
       <li class="nav-item">
-        <a class="nav-link p-3 fw-bold" href="#">Beranda</a>
+        <a class="nav-link p-3 fw-bold nav-link-custom active-custom" href="#">Beranda</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link p-3 fw-bold" href="#">Artikel</a>
+        <a class="nav-link p-3 fw-bold nav-link-custom" href="#">Artikel</a>
       </li>
       <li class="nav-item dropdown">
-        <a class="nav-link p-3 dropdown-toggle fw-bold" data-bs-toggle="dropdown">Pemesanan</a>
+        <a class="nav-link p-3 dropdown-toggle fw-bold nav-link-custom" data-bs-toggle="dropdown">Pemesanan</a>
         <ul class="dropdown-menu bg-dark">
-          <li><a class="dropdown-item text-primary fw-bold" href="#">Order Aqiqah</a></li>
-          <li><a class="dropdown-item text-primary fw-bold" href="#">Order Catering</a></li>
+          <li><a class="dropdown-item text-primary fw-bold nav-link-custom" href="#">Order Aqiqah</a></li>
+          <li><a class="dropdown-item text-primary fw-bold nav-link-custom" href="#">Order Catering</a></li>
         </ul>
       </li>
     </ul>
