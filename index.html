@@ -60,9 +60,11 @@
   <div class="container-fluid">
     <div class="row">
       <div class="col-sm-6 text-white">
-        <div class="container-fluid" style="background-color: rgba(255, 164, 0, 0.3);">
+        <div class="container-fluid" style="background-color: rgba(255, 164, 0, 0.4);">
           <h2 class="text-center text-info text-shadow-custom fw-bold">Keunggulan Kami</h2>
-          <p><i class="fas fa-money-bill-alt text-info fs-2"></i> Bayar setelah barang sampai lokasi / COD</p>
+          <p><i class="fas fa-money-bill-alt text-info fs-2"></i> Bayar setelah barang sampai lokasi / COD
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#cod">Prosedur COD</button>
+          </p>
           <p><i class="fas fa-hand-holding-usd text-info fs-2"></i> Uang kembali jika barang membusuk</p>
           <p><i class="fas fa-users text-info fs-2"></i> Bekerja-sama dengan peternak lokal</p>
           <p><i class="fas fa-mosque text-info fs-2"></i> Sesuai dengan syari'at Islam</p>
@@ -82,9 +84,36 @@
   </div>
 </div>
 <!--ahir isi-->
+<!-- modal prosedur cod -->
+<div class="modal" id="cod">
+  <div class="modal-dialog modal-fullscreen">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">Prosedur COD</h4>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+      <div class="modal-body">
+        Setelah formulir pemesanan kami terima, petugas kami akan datang ke alamat lokasi yang tertera di formulir
+        untuk memastikan kebenaran pemesanan dan alamat, mohon cantumkan nomor yang bisa di hubungi.
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Tutup</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
 
 <!-- div men tambah duwur -->
 <div style="height: 3000px;"></div>
+
+
+
 
 
 
