@@ -4,7 +4,7 @@ document.getElementById('data-table').style.display = 'none';
 // Fungsi untuk memuat data dari API
 async function loadData() {
     try {
-        const response = await fetch('https://words-representation-coupons-afraid.trycloudflare.com/api.php'); // Ganti dengan path ke API Anda
+        const response = await fetch(' https://ta-ia-kingdom-men.trycloudflare.com'); // Ganti dengan path ke API Anda
         
         if (!response.ok) {
             throw new Error('Gagal mengambil data: ' + response.status);
