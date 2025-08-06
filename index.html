@@ -1,64 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Client-Side Rendering Demo</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 20px;
-        }
-        h1 {
-            color: #333;
-            text-align: center;
-        }
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 20px;
-        }
-        th, td {
-            border: 1px solid #ddd;
-            padding: 8px;
-            text-align: left;
-        }
-        th {
-            background-color: #f2f2f2;
-        }
-        tr:nth-child(even) {
-            background-color: #f9f9f9;
-        }
-        #loading {
-            text-align: center;
-            margin: 20px 0;
-        }
-        #error {
-            color: red;
-            text-align: center;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Form Submission Example</title>
 </head>
 <body>
-    <h1>Data Bank</h1>
-    <div id="loading">Memuat data...</div>
-    <div id="error"></div>
-    <table id="data-table">
-        <thead>
-            <tr>
-                <th>ID</th>
-                <th>Nama</th>
-                <th>Jumlah Uang</th>
-                <th>Password</th>
-            </tr>
-        </thead>
-        <tbody id="table-body">
-            <!-- Data akan dimasukkan di sini oleh JavaScript -->
-        </tbody>
-    </table>
+  <h1>Submit Your Name</h1>
+  
+  <!-- Form untuk input data -->
+  <form id="nameForm">
+    <input type="text" id="nameInput" placeholder="Enter your name" required>
+    <button type="submit">Submit</button>
+  </form>
 
-    <script src="faiz.js"></script>
+  <!-- Tempat menampilkan hasil dari backend -->
+  <div id="result"></div>
+
+  <!-- Panggil file JavaScript -->
+  <script src="faiz.js"></script>
 </body>
 </html>

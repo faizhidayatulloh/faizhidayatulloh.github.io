@@ -1,44 +1,23 @@
-// Sembunyikan tabel sementara data belum dimuat
-document.getElementById('data-table').style.display = 'none';
+document.getElementById("nameForm").addEventListener("submit", function(event) {
+  event.preventDefault(); // Mencegah form reload halaman
 
-// Fungsi untuk memuat data dari API
-async function loadData() {
-    try {
-        const response = await fetch(' https://ta-ia-kingdom-men.trycloudflare.com'); // Ganti dengan path ke API Anda
-        
-        if (!response.ok) {
-            throw new Error('Gagal mengambil data: ' + response.status);
-        }
-        
-        const data = await response.json();
-        
-        // Sembunyikan pesan loading
-        document.getElementById('loading').style.display = 'none';
-        
-        // Tampilkan tabel
-        document.getElementById('data-table').style.display = 'table';
-        
-        // Isi tabel dengan data
-        const tableBody = document.getElementById('table-body');
-        data.forEach(item => {
-            const row = document.createElement('tr');
-            
-            // Sesuaikan kolom berikut dengan struktur data Anda
-            row.innerHTML = `
-                <td>${item.id || ''}</td>
-                <td>${item.nama || ''}</td>
-                <td>${item.jumlah_uang || ''}</td>
-                <td>${item.password || ''}</td>
-            `;
-            
-            tableBody.appendChild(row);
-        });
-    } catch (error) {
-        document.getElementById('loading').style.display = 'none';
-        document.getElementById('error').textContent = 'Error: ' + error.message;
-        console.error('Error:', error);
-    }
-}
+  // Ambil nilai input
+  const name = document.getElementById("nameInput").value;
 
-// Panggil fungsi loadData saat halaman dimuat
-window.onload = loadData;
+  // Kirim data ke backend (index.php)
+  fetch("http://localhost:80/index.php", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ name: name }), // Kirim data sebagai JSON
+  })
+  .then(response => response.json()) // Parse respons JSON dari backend
+  .then(data => {
+    // Tampilkan hasil di frontend
+    document.getElementById("result").innerHTML = `
+      <p>Backend says: <strong>${data.message}</strong></p>
+    `;
+  })
+  .catch(error => console.error("Error:", error));
+});
