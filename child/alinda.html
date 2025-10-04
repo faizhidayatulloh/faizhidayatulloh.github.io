@@ -1,11 +1,25 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tambah Elemen ke faiz.html</title>
 </head>
 <body>
-    <h1>ini file di path "/child"</h1>
+  <iframe id="halamanFaiz" src="faiz.html" width="600" height="400"></iframe>
+
+  <script>
+    // Tunggu sampai iframe selesai dimuat
+    const iframe = document.getElementById("halamanFaiz");
+    iframe.onload = function() {
+      // Akses dokumen di dalam iframe
+      const doc = iframe.contentDocument || iframe.contentWindow.document;
+
+      // Buat elemen <p> di dalam halaman faiz.html
+      const p = doc.createElement("p");
+      p.textContent = "ini hasil dari javascript (ditambahkan dari alinda.html)";
+      doc.body.appendChild(p);
+    };
+  </script>
 </body>
 </html>
