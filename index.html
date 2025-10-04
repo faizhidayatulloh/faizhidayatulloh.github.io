@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Live Preview</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+        input[type="text"] {
+            padding: 8px;
+            width: 300px;
+            margin-bottom: 20px;
+        }
+        #output {
+            font-size: 1.2em;
+            color: #333;
+            border: 1px solid #ccc;
+            padding: 10px;
+            width: 320px;
+            min-height: 30px;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>Form Live Preview</h2>
+    <form id="myForm">
+        <label for="inputText">Ketik sesuatu:</label><br>
+        <input type="text" id="inputText" placeholder="Tuliskan sesuatu..." />
+    </form>
+
+    <h3>Hasil:</h3>
+    <div id="output"></div>
+
+    <script>
+        const input = document.getElementById('inputText');
+        const output = document.getElementById('output');
+
+        // Event listener ketika pengguna mengetik di input
+        input.addEventListener('input', () => {
+            output.textContent = input.value;
+        });
+    </script>
+
+</body>
+</html>
