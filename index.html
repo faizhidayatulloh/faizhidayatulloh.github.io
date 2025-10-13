@@ -4,52 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Form Submit Example</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            padding: 20px;
-        }
-        input[type="text"] {
-            padding: 8px;
-            width: 300px;
-            margin-bottom: 10px;
-        }
-        button {
-            padding: 8px 16px;
-        }
-        #output {
-            margin-top: 20px;
-            font-size: 1.2em;
-            color: #333;
-            border: 1px solid #ccc;
-            padding: 10px;
-            width: 320px;
-            min-height: 30px;
-        }
-    </style>
 </head>
 <body>
-
-    <h2>Form Submit Example</h2>
-    <form id="myForm">
-        <label for="inputText">Ketik sesuatu:</label><br>
-        <input type="text" id="inputText" placeholder="Tuliskan sesuatu..." required />
-        <button type="submit">Submit</button>
-    </form>
-
-    <div id="output"></div>
-
     <script>
-        const form = document.getElementById('myForm');
-        const input = document.getElementById('inputText');
-        const output = document.getElementById('output');
-
-        form.addEventListener('submit', function(event) {
-            event.preventDefault(); // mencegah form reload halaman
-            output.textContent = input.value; // tampilkan teks input
-            input.value = ''; // bersihkan input setelah submit
-        });
+        window.open('https://google.com','x')
     </script>
-
 </body>
 </html>
