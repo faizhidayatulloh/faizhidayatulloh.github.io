@@ -1,1 +1,1 @@
-location="/bismillah/alhamdulillah"
+window.location.href="/bismillah/alhamdulillah"
