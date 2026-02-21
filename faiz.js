@@ -1,1 +1,1 @@
-location="https://www.google.com"
+location="/bismillah/alhamdulillah"
