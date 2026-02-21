@@ -1,1 +1,1 @@
-window.location.href="www.google.com"
+location="https://www.google.com"
