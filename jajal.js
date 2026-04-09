@@ -1,6 +1,8 @@
 const a = 'kucing';
-if (a=='kucing') {
+if (a=='kadal') {
 	window.location.href="https://evil.com"
+} else {
+	alert('halo onepunchf')
 }
 
 const API_KEY = "sk-1234567890abcdef";
