@@ -7,5 +7,20 @@
 </head>
 <body>
 	<iframe id="victim" width="800" height="600" src="https://bibliothequenumerique.tv5monde.com/"></iframe>
+		
+	<script>	
+		// Di halaman kamu (parent)
+	const frame = document.querySelector('iframe')
+
+	frame.contentWindow.postMessage(
+	  { __tcfapiCall: { command: "getTCData", parameter: null, callId: 1 } },
+	  "*"  // atau spesifik: "https://bibliothequenumerique.tv5monde.com"
+	)
+
+	// Tangkap balasannya
+	window.addEventListener("message", (e) => {
+	  console.log("Balasan dari iframe:", e.data)
+	})
+</script>
 </body>
 </html>
