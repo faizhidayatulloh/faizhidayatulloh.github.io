@@ -1,0 +1,50 @@
+name: CI-CD Otomatis GitHub Pages
+
+on:
+  push:
+    branches: ["main"] # Ubah ke "master" jika nama branch utama Anda masih master
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
+jobs:
+  # Tahap 1: Continuous Integration (Pengecekan)
+  ci-check:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Ambil Kode Terbaru
+        uses: actions/checkout@v4
+
+      - name: Validasi File Utama
+        run: |
+          if [ ! -f index.html ]; then
+            echo "Error: File index.html tidak ditemukan di root folder!"
+            exit 1
+          fi
+          echo "Validasi aman: File index.html ditemukan."
+
+  # Tahap 2: Continuous Deployment (Peluncuran otomatis)
+  cd-deploy:
+    needs: ci-check
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Ambil Kode Terbaru
+        uses: actions/checkout@v4
+
+      - name: Unggah Dokumen Web
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: '.' # Mengunggah seluruh isi folder utama
+
+      - name: Deploy ke Live Server
+        id: deployment
+        uses: actions/deploy-pages@v4
