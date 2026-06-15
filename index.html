@@ -8,22 +8,25 @@
             </head>
             <body>
             <script>
-                 // 1. Inisialisasi objek XMLHttpRequest
-const xhr = new XMLHttpRequest();
-
-// 2. Konfigurasi permintaan (Method, URL, Asynchronous)
+              const xhr = new XMLHttpRequest();
 const url = 'https://clearme.atlassian.net/servicedesk/customer/portals';
-xhr.open('GET', url, true);
 
-// 3. WAJIB: Sertakan cookie dan header autentikasi dalam permintaan CORS
+xhr.open('GET', url, true);
 xhr.withCredentials = true;
 
-// 4. Atur apa yang terjadi saat respons selesai dimuat
 xhr.onload = function() {
     if (xhr.status >= 200 && xhr.status < 300) {
-        // Berhasil mendapatkan respons
         console.log('Sukses:', xhr.responseText);
-    }}
+    } else {
+        console.error('Gagal dengan status:', xhr.status);
+    }
+};
+
+xhr.onerror = function() {
+    console.error('Terjadi error jaringan');
+};
+
+xhr.send(); // ← INI YANG PALING PENTING, tanpa ini request tidak dikirim
                 </script>             
             </body>
         </html>
