@@ -7,27 +7,10 @@
                 <title>Postmessage PoC</title>
             </head>
             <body>
+            <h1 id='faiz'></h1>
             <script>
-              const xhr = new XMLHttpRequest();
-const url = 'https://clearme.atlassian.net/servicedesk/customer/portals';
-
-xhr.open('GET', url, true);
-xhr.withCredentials = true;
-
-xhr.onload = function() {
-    if (xhr.status >= 200 && xhr.status < 300) {
-        console.log('Sukses:', xhr.responseText);
-    } else {
-        console.error('Gagal dengan status:', xhr.status);
-    }
-};
-
-xhr.onerror = function() {
-    console.error('Terjadi error jaringan');
-};
-
-xhr.send(); // ← INI YANG PALING PENTING, tanpa ini request tidak dikirim
-                </script>             
+             document.getElementById('faiz').innerHTML='halo dunia susah';
+            </script>             
             </body>
         </html>
         
