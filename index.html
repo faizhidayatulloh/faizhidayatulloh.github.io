@@ -11,7 +11,7 @@ const xhr = new XMLHttpRequest();
 
 // 2. Tentukan metode HTTP dan URL tujuan
 const url = 'https://id.trip.com/restapi/soa2/27024/getUserInfo';
-xhr.open('POST', url, true); // Ubah 'POST' menjadi 'GET' jika API tersebut menggunakan GET
+xhr.open('GET', url, true); // Ubah 'POST' menjadi 'GET' jika API tersebut menggunakan GET
 
 // 3. Aktifkan credential (cookie, otorisasi TLS, atau sertifikat)
 xhr.withCredentials = true;
