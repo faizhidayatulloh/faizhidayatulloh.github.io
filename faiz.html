@@ -6,8 +6,35 @@
     <title>Document</title>
 </head>
 <body>
-    <h1 id="demo">INI HANYA LATIHAN</h1>
-    <script src="faiz.js"></script>
+<script>
+    // 1. Inisialisasi objek XMLHttpRequest
+const xhr = new XMLHttpRequest();
+const url = "https://id.trip.com/restapi/soa2/27024/ssoIsLoginAndGetAccountInfo";
+
+// 2. Konfigurasi request (Ubah ke 'GET' jika API tersebut menggunakan GET)
+xhr.open("GET", url, true);
+
+// 3. PENTING: Mengizinkan pengiriman kredensial (cookie, otentikasi HTTP)
+xhr.withCredentials = true;
+
+// 4. Mengatur Header Request (Opsional, sesuaikan dengan kebutuhan API)
+xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+
+// 5. Menangani respon dari server
+xhr.onreadystatechange = function () {
+    if (xhr.readyState === XMLHttpRequest.DONE) {
+        if (xhr.status === 200) {
+            console.log("Sukses:", JSON.parse(xhr.responseText));
+        } else {
+            console.error("Gagal dengan status:", xhr.status);
+        }
+    }
+};
+
+// 6. Mengirimkan request (Kirim data string JSON jika POST, atau kosongkan jika GET)
+const data = JSON.stringify({}); 
+xhr.send(data);
+</script>
     
 </body>
 </html>
