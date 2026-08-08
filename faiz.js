@@ -1,1 +1,0 @@
-alert('anda kena hack')
