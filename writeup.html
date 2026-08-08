@@ -29,34 +29,74 @@
   </header>
 
   <section style="border-bottom:none; padding-top:20px;">
-
+<!-- bug ke 1 -->
     <article class="writeup-item">
-      <h2 class="writeup-title">Broken authorization on password reset — full account takeover</h2>
+      <div class="writeup-meta">Platform: Yeswehack - Bounty: 200 Euro</div>
+      <h2 class="writeup-title">CSRF on ae.[redacted].com via /on/demandware.store/Sites-[redacted]_AE-Site/en_AE/Account-SavePreferences (HTTP POST) Leads to Unauthorized Account Manipulation</h2>
 
-      <h4>Summary</h4>
+      <h3 class="writeup-title">Summary</h3>
+      <p>Beneath the surface of a seemingly routine preference-saving endpoint lies a silent, unguarded door. The endpoint Account-SavePreferences on ae.[redacted].com accepts POST requests to update a user's account preferences — yet it fails to enforce the very safeguard designed to protect it: the csrf_token. When the csrf_token parameter is stripped away entirely, the server raises no objection. It does not pause, does not verify, does not resist — it simply obeys. Compounding this weakness, the session cookie dwsid is configured with SameSite=None, stripping away the browser's last line of defense against cross-origin requests riding on an authenticated session.
+The result is a textbook Cross-Site Request Forgery: an attacker can craft a malicious page that, the moment a logged-in victim visits it, silently forges a request on their behalf — rewriting their account preferences without their knowledge, consent, or any visible sign of compromise. No sophisticated exploit chain is required; only a single click, or even just a page load, is enough to turn trust into a vulnerability.
+      </p></br>
+      <h3 class="writeup-title">PoC</h3>
+      <p>A working proof-of-concept was hosted and demonstrated at: <code>https://faizhidayatulloh.github.io/index.html</code>. The PoC page contains an auto-submitting HTML form targeting:
+      <code>POST https://ae.[redacted].com/on/demandware.store/Sites-[redacted]_AE-Site/en_AE/Account-SavePreferences</code>.<br>
+      Crucially, the form omits the csrf_token field entirely. When an authenticated victim visits the PoC page, their browser — carrying the dwsid session cookie due to its SameSite=None attribute — automatically transmits the forged request. The server, expecting no token verification, processes it as legitimate, and the victim's account preferences are altered without their awareness.
+      </p><br>
+      <h3 class="writeup-title">Impact</h3>
       <p>
-        The password reset endpoint trusted a client-supplied <code>user_id</code> parameter instead
-        of deriving identity from the active session. As a result, any authenticated user could reset
-        the password of any other account simply by changing that parameter.
-      </p>
-
-      <h4>Steps to reproduce</h4>
-      <ul>
-        <li>Trigger a password reset on your own account and intercept the confirmation request.</li>
-        <li>Change the <code>user_id</code> field to a victim's numeric ID.</li>
-        <li>Submit the request — the server accepts the new password without validating ownership.</li>
-      </ul>
-
-      <h4>Impact</h4>
-      <p>
-        Full account takeover for any user, including admin accounts, with no interaction required
-        from the victim.
+       An attacker can manipulate a victim's account preferences at will, purely through social engineering (e.g., luring the victim to a malicious link), with no interaction beyond a page visit required.
       </p>
     </article>
+    <!-- bug ke 2 -->
+    <article class="writeup-item">
+      <div class="writeup-meta">Platform: yeswehack - Bounty: 300 Euro</div>
+      <h2 class="writeup-title">
+        Web Cache Deception on ae.[redacted].com via GET Parameter q on /en/search Leads to Sensitive User Data Exposure
+      </h2>
+      <h3 class="writeup-title">Summary</h3>
+      <p>
+        Somewhere between the user's browser and the origin server sits a cache — meant to serve static, harmless content faster. But on <strong>ae.[redacted].com</strong>, that cache was blind to context. It couldn't tell the difference between a public search results page and a page silently embedding a logged-in user's private data.
 
-
+The <strong>/en/search endpoint</strong>, when hit with an authenticated session and an arbitrary q parameter, doesn't just return search results — it renders personal account details directly into the page's script elements: email address, phone number, user ID, first name, and more. Under normal circumstances, this would remain confined to the victim's own session. But because the response to this URL gets cached — indexed by a query string an attacker fully controls — that private data becomes a hostage of the cache itself.
+      </p><br>
+      <h3 class="writeup-title">Step to Reproduce</h3>
+      <ul>
+        <li>Craft a unique, never-before-used value for the <strong>q</strong> parameter to guarantee the request has not already been cached by another user:
+        <code>https://ae.[redacted].com/en/search?q=</code>
+        </li>
+        <li>
+          Send this crafted URL to the victim, ensuring they are logged into their account, and get them to open it in their browser.
+        </li>
+        <li>
+          Once the victim's request has populated the cache, retrieve the same URL — either unauthenticated, via curl, or from an entirely different browser/session:
+          <code style="display: block;">curl "https://ae.[redacted].com/en/search?q=<randomString>" | grep -i "Email"</code>
+        </li>
+        <li>
+          Observe that the response returned is the cached version originally generated for the victim — exposing their email, phone number, user ID, first name, and other sensitive account details embedded within the page's script elements.
+        </li>
+      </ul>
+      <h3 class="writeup-title">Impact</h3>
+      <p>
+        Sensitive personally identifiable information (PII) — including email addresses, phone numbers, user IDs, and names — can be exposed to unauthenticated third parties through cache poisoning driven by attacker-controlled query parameters. This enables large-scale, low-effort harvesting of victim data simply by distributing uniquely crafted links and later scraping the resulting cached responses.
+      </p>
+      <h3 class="writeup-title">Remediation</h3>
+      <ul>
+        <li>
+          Exclude authenticated, user-specific responses from being cached — ensure <code>Cache-Control: private, no-store</code> (or equivalent) is applied to any response containing personalized data.
+        </li>
+        <li>
+          Normalize or strip cache keys so that arbitrary query parameters (like q) cannot be used to create unique, cacheable variants of pages containing sensitive content.
+        </li>
+        <li>
+          Ensure the caching layer (CDN/reverse proxy) is configured to respect Vary headers and cache-control directives on a per-user basis, rather than caching indiscriminately by URL alone.
+        </li>
+      </ul>
+    </article>
   </section>
 
+
+  
   <footer>// wongkebumen — 2026 // all findings disclosed responsibly</footer>
 
 </div>
