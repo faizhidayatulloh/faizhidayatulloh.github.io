@@ -1,0 +1,281 @@
+@import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=JetBrains+Mono:wght@400;500;700&display=swap');
+
+:root{
+  --bg:#ffffff;
+  --bg-2:#f3f6f4;
+  --line:#dfe5e1;
+  --green:#087f3f;
+  --green-dim:#a9d9bb;
+  --green-soft:#0ea866;
+  --text:#1e2621;
+  --text-dim:#66766c;
+  --mono-a:'Share Tech Mono', ui-monospace, monospace;
+  --mono-b:'JetBrains Mono', ui-monospace, monospace;
+}
+
+*{box-sizing:border-box; margin:0; padding:0;}
+
+html{scroll-behavior:smooth;}
+
+body{
+  background:var(--bg);
+  color:var(--text);
+  font-family:var(--mono-b);
+  line-height:1.7;
+  min-height:100vh;
+  position:relative;
+}
+
+#matrix-bg{
+  position:fixed;
+  inset:0;
+  z-index:0;
+  opacity:.16;
+  pointer-events:none;
+}
+
+a{color:inherit; text-decoration:none;}
+::selection{background:var(--green); color:#ffffff;}
+:focus-visible{outline:1px solid var(--green); outline-offset:3px;}
+
+.wrap{
+  max-width:760px;
+  margin:0 auto;
+  padding:0 24px;
+  position:relative;
+  z-index:2;
+}
+
+/* top brand bar */
+.topbar{
+  padding:22px 0;
+  border-bottom:1px solid var(--line);
+  margin-bottom:10px;
+  background:rgba(255,255,255,0.9);
+}
+.topbar .wrap{
+  display:flex; align-items:center; justify-content:space-between;
+}
+.brand{
+  font-family:var(--mono-a);
+  font-size:16px;
+  color:var(--green);
+  letter-spacing:.03em;
+}
+.brand .caret{
+  display:inline-block;
+  width:9px; height:1em;
+  background:var(--green);
+  margin-left:4px;
+  vertical-align:text-bottom;
+  animation:blink 1.1s step-end infinite;
+}
+@keyframes blink{50%{opacity:0;}}
+.topbar nav a{
+  font-family:var(--mono-b);
+  font-size:13px;
+  color:var(--text-dim);
+  transition:color .2s;
+}
+.topbar nav a:hover{color:var(--green);}
+
+/* prompt line style used repeatedly */
+.prompt{
+  font-family:var(--mono-a);
+  font-size:13px;
+  color:var(--green);
+  margin-bottom:6px;
+}
+.prompt::before{content:'root@wongkebumen:~$ '; color:var(--green);}
+
+/* hero */
+.hero{
+  padding:64px 0 56px;
+  border-bottom:1px solid var(--line);
+}
+.glitch{
+  font-family:var(--mono-a);
+  font-size:50px;
+  color:var(--green);
+  letter-spacing:.01em;
+  position:relative;
+}
+.hero-role{
+  font-size:15px;
+  color:var(--text);
+  margin-top:10px;
+  font-family:var(--mono-b);
+  font-weight: bold;
+}
+.hero-desc{
+  max-width:520px;
+  margin-top:20px;
+  color:var(--text-dim);
+  font-size:14.5px;
+}
+.hero-desc strong{color:var(--green); font-weight:600;}
+
+.cta-row{margin-top:32px; display:flex; gap:14px; flex-wrap:wrap; align-items:center;}
+.btn{
+  font-family:var(--mono-a);
+  font-size:25px;
+  padding:13px 24px;
+  border:1px solid var(--green);
+  border-radius:2px;
+  color:var(--green);
+  background:rgba(8,127,63,0.05);
+  display:inline-flex; align-items:center; gap:10px;
+  transition:all .2s;
+}
+.btn:hover{
+  background:var(--green);
+  color:#ffffff;
+  box-shadow:0 4px 18px rgba(8,127,63,0.25);
+}
+.btn-back{
+  font-family:var(--mono-b);
+  font-size:13px;
+  color:var(--text-dim);
+}
+.btn-back:hover{color:var(--green);}
+
+/* section */
+section{padding:52px 0; border-bottom:1px solid var(--line);}
+section:last-of-type{border-bottom:none;}
+.sec-tag{
+  font-family:var(--mono-a);
+  font-size:12px;
+  color:var(--text-dim);
+  letter-spacing:.1em;
+  text-transform:uppercase;
+  margin-bottom:6px;
+}
+.sec-title{
+  font-family:var(--mono-a);
+  font-size:25px;
+  color:var(--green);
+  margin-bottom:24px;
+  font-weight: bold;
+}
+
+/* profile */
+.profile-row{
+  display:flex; gap:26px; align-items:flex-start;
+}
+.avatar{
+  width:96px; height:96px; flex-shrink:0;
+  border:1px solid var(--green-dim);
+  border-radius:2px;
+  display:flex; align-items:center; justify-content:center;
+  font-family:var(--mono-a);
+  font-size:30px;
+  color:var(--green);
+  background:var(--bg-2);
+}
+.profile-text p{color:var(--text); font-size:14.5px; margin-bottom:12px;}
+.profile-text p:last-child{margin-bottom:0;}
+
+/* skills - directory listing style */
+.dir-listing{
+  font-family:var(--mono-b);
+  font-size:13.5px;
+  border:1px solid var(--line);
+  border-radius:3px;
+  background:var(--bg-2);
+  overflow:hidden;
+}
+.dir-row{
+  display:grid;
+  grid-template-columns:90px 1fr 90px;
+  gap:12px;
+  padding:10px 16px;
+  border-bottom:1px solid var(--line);
+  color:var(--text-dim);
+}
+.dir-row:last-child{border-bottom:none;}
+.dir-row .perm{color:var(--green);}
+.dir-row .name{color:var(--text);}
+.dir-row .lvl{color:var(--green-soft); text-align:right;}
+
+/* contact list */
+.contact-list{
+  display:flex; flex-wrap:wrap; gap:10px 22px;
+  font-family:var(--mono-b); font-size:13.5px;
+}
+.contact-list a{
+  color:var(--text-dim);
+  border-bottom:1px dashed var(--line);
+  padding-bottom:2px;
+  transition:color .2s, border-color .2s;
+}
+.contact-list a:hover{color:var(--green); border-color:var(--green);}
+
+footer{
+  padding:30px 0 40px;
+  font-family:var(--mono-a);
+  font-size:11.5px;
+  color:var(--text-dim);
+  text-align:center;
+}
+
+/* ---------------- writeup page ---------------- */
+.writeup-item{
+  padding:34px 0;
+  border-bottom:1px solid var(--line);
+}
+.writeup-item:last-child{border-bottom:none;}
+.writeup-meta{
+  font-family:var(--mono-a);
+  font-size:12px;
+  color:var(--text-dim);
+  display:flex; gap:16px; flex-wrap:wrap;
+  margin-bottom:8px;
+}
+.writeup-title{
+  font-family:var(--mono-a);
+  font-size:19px;
+  color:var(--green);
+  margin-bottom:14px;
+  line-height:1.4;
+}
+.writeup-item h4{
+  font-family:var(--mono-a);
+  font-size:12px;
+  color:var(--green-soft);
+  text-transform:uppercase;
+  letter-spacing:.08em;
+  margin:18px 0 8px;
+}
+.writeup-item h4:first-of-type{margin-top:0;}
+.writeup-item p, .writeup-item li{
+  color:var(--text);
+  font-size:14.5px;
+}
+.writeup-item ul{padding-left:20px; margin-top:6px;}
+.writeup-item li{margin-bottom:5px;}
+.writeup-item code{
+  font-family:var(--mono-b);
+  background:var(--bg-2);
+  border:1px solid var(--line);
+  padding:2px 7px;
+  border-radius:3px;
+  font-size:13px;
+  color:var(--green);
+}
+
+@media (max-width:640px){
+  .glitch{font-size:32px;}
+  .profile-row{flex-direction:column;}
+  .dir-row{grid-template-columns:60px 1fr 60px; font-size:12px;}
+}
+
+@media (prefers-reduced-motion:reduce){
+  *{animation:none !important; transition:none !important;}
+}
+
+/* gambar profile*/
+.avatar img {
+  width: 100%;
+  height: 100%;
+  display: block;
+}

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Findings & Writeup — wongkebumen</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<canvas id="matrix-bg"></canvas>
+
+<div class="topbar">
+  <div class="wrap">
+    <div class="brand">wongkebumen<span class="caret"></span></div>
+    <nav><a href="index.html" class="btn-back">‹ cd .. // back home</a></nav>
+  </div>
+</div>
+
+<div class="wrap">
+
+  <header class="hero" style="padding:48px 0 36px;">
+    <div class="prompt">cat findings.log</div>
+    <div class="sec-title" style="font-size:30px; margin-bottom:0;">Findings &amp; Writeup</div>
+    <p class="hero-desc" style="margin-top:14px;">
+      A collection of security findings I've discovered and reported. Every issue listed here has
+      already been fixed by the affected party before being published.
+    </p>
+  </header>
+
+  <section style="border-bottom:none; padding-top:20px;">
+
+    <article class="writeup-item">
+      <h2 class="writeup-title">Broken authorization on password reset — full account takeover</h2>
+
+      <h4>Summary</h4>
+      <p>
+        The password reset endpoint trusted a client-supplied <code>user_id</code> parameter instead
+        of deriving identity from the active session. As a result, any authenticated user could reset
+        the password of any other account simply by changing that parameter.
+      </p>
+
+      <h4>Steps to reproduce</h4>
+      <ul>
+        <li>Trigger a password reset on your own account and intercept the confirmation request.</li>
+        <li>Change the <code>user_id</code> field to a victim's numeric ID.</li>
+        <li>Submit the request — the server accepts the new password without validating ownership.</li>
+      </ul>
+
+      <h4>Impact</h4>
+      <p>
+        Full account takeover for any user, including admin accounts, with no interaction required
+        from the victim.
+      </p>
+
+      <h4>Fix</h4>
+      <p>
+        The vendor now binds the reset action to the authenticated session and re-validates the reset
+        token server-side. The fix shipped within 72 hours of the report.
+      </p>
+    </article>
+
+
+  </section>
+
+  <footer>// wongkebumen — 2026 // all findings disclosed responsibly</footer>
+
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
