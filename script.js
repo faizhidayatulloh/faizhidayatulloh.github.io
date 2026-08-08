@@ -1,4 +1,4 @@
-// ---------- Matrix digital rain background (light, low-opacity) ----------
+// ---------- Matrix digital rain background (dim, low-opacity, non-distracting) ----------
 (function initMatrixRain(){
   const canvas = document.getElementById('matrix-bg');
   if(!canvas) return;
@@ -19,10 +19,15 @@
   if(reduceMotion) return;
 
   function draw(){
-    ctx.fillStyle = 'rgba(255,255,255,0.12)';
+    // fade trail with a DARK overlay (matches black bg) instead of a white one,
+    // so the rain fades into the background rather than washing it out
+    ctx.fillStyle = 'rgba(5,7,10,0.18)';
     ctx.fillRect(0,0,canvas.width,canvas.height);
-    ctx.fillStyle = '#087f3f';
+
+    // dim, low-saturation blue so it reads as background texture, not foreground text
+    ctx.fillStyle = 'rgba(63,169,255,0.35)';
     ctx.font = fontSize + 'px monospace';
+
     for(let i=0; i<drops.length; i++){
       const text = chars[Math.floor(Math.random()*chars.length)];
       ctx.fillText(text, i*fontSize, drops[i]*fontSize);
@@ -32,7 +37,9 @@
       drops[i]++;
     }
   }
-  setInterval(draw, 55);
+
+  // slower refresh so it feels like ambient texture, not a moving distraction
+  setInterval(draw, 110);
 })();
 
 // ---------- subtle glitch effect on hero name (hover) ----------

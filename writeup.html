@@ -32,8 +32,10 @@
 <!-- bug ke 1 -->
     <article class="writeup-item">
       <div class="writeup-meta">Platform: Yeswehack - Bounty: 200 Euro</div>
-      <h2 class="writeup-title">CSRF on ae.[redacted].com via /on/demandware.store/Sites-[redacted]_AE-Site/en_AE/Account-SavePreferences (HTTP POST) Leads to Unauthorized Account Manipulation</h2>
-
+      <details>
+      <summary>
+        <h2 class="writeup-title">CSRF on ae.[redacted].com via /on/demandware.store/Sites-[redacted]_AE-Site/en_AE/Account-SavePreferences (HTTP POST) Leads to Unauthorized Account Manipulation</h2>
+      </summary>
       <h3 class="writeup-title">Summary</h3>
       <p>Beneath the surface of a seemingly routine preference-saving endpoint lies a silent, unguarded door. The endpoint Account-SavePreferences on ae.[redacted].com accepts POST requests to update a user's account preferences — yet it fails to enforce the very safeguard designed to protect it: the csrf_token. When the csrf_token parameter is stripped away entirely, the server raises no objection. It does not pause, does not verify, does not resist — it simply obeys. Compounding this weakness, the session cookie dwsid is configured with SameSite=None, stripping away the browser's last line of defense against cross-origin requests riding on an authenticated session.
 The result is a textbook Cross-Site Request Forgery: an attacker can craft a malicious page that, the moment a logged-in victim visits it, silently forges a request on their behalf — rewriting their account preferences without their knowledge, consent, or any visible sign of compromise. No sophisticated exploit chain is required; only a single click, or even just a page load, is enough to turn trust into a vulnerability.
@@ -47,13 +49,17 @@ The result is a textbook Cross-Site Request Forgery: an attacker can craft a mal
       <p>
        An attacker can manipulate a victim's account preferences at will, purely through social engineering (e.g., luring the victim to a malicious link), with no interaction beyond a page visit required.
       </p>
+      </details>
     </article>
     <!-- bug ke 2 -->
     <article class="writeup-item">
       <div class="writeup-meta">Platform: yeswehack - Bounty: 300 Euro</div>
-      <h2 class="writeup-title">
+      <details>
+      <summary>
+        <h2 class="writeup-title">
         Web Cache Deception on ae.[redacted].com via GET Parameter q on /en/search Leads to Sensitive User Data Exposure
       </h2>
+      </summary>
       <h3 class="writeup-title">Summary</h3>
       <p>
         Somewhere between the user's browser and the origin server sits a cache — meant to serve static, harmless content faster. But on <strong>ae.[redacted].com</strong>, that cache was blind to context. It couldn't tell the difference between a public search results page and a page silently embedding a logged-in user's private data.
@@ -92,6 +98,7 @@ The <strong>/en/search endpoint</strong>, when hit with an authenticated session
           Ensure the caching layer (CDN/reverse proxy) is configured to respect Vary headers and cache-control directives on a per-user basis, rather than caching indiscriminately by URL alone.
         </li>
       </ul>
+      </details>
     </article>
   </section>
 
