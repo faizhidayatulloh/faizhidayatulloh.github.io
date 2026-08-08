@@ -1,1 +1,1 @@
-document.getElementById('demo').innerHTML = 'saya berubah dengan javascript'
+alert('anda kena hack')
