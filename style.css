@@ -233,7 +233,7 @@ footer{
 .writeup-meta{
   font-family:var(--mono-a);
   font-size:12px;
-  color:var(--text-dim);
+  color:white;
   display:flex; gap:16px; flex-wrap:wrap;
   margin-bottom:8px;
 }
