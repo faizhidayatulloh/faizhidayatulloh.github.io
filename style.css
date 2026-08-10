@@ -201,7 +201,6 @@ section:last-of-type{border-bottom:none;}
 .dir-row:last-child{border-bottom:none;}
 .dir-row .perm{color:var(--green);}
 .dir-row .name{color:var(--text);}
-.dir-row .lvl{color:var(--green-soft); text-align:right;}
 
 /* contact list */
 .contact-list{
@@ -244,15 +243,6 @@ footer{
   margin-bottom:14px;
   line-height:1.4;
 }
-.writeup-item h4{
-  font-family:var(--mono-a);
-  font-size:12px;
-  color:var(--green-soft);
-  text-transform:uppercase;
-  letter-spacing:.08em;
-  margin:18px 0 8px;
-}
-.writeup-item h4:first-of-type{margin-top:0;}
 .writeup-item p, .writeup-item li{
   color:var(--text);
   font-size:14.5px;
