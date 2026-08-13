@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>poc</h1>
+    <script>
+        fetch('https://app.box.com/app-api/enduserapp/profile/52316439894', {
+  method: 'GET',
+  credentials: 'include',
+  headers: {
+    'Accept': 'application/json',
+    'Content-Type': 'application/json'
+  }
+})
+.then(response => {
+  if (!response.ok) {
+    throw new Error(`HTTP error! Status: ${response.status}`);
+  }
+  return response.json();
+})
+.then(data => {
+  console.log('Data profil berhasil diambil:', data);
+})
+.catch(error => {
+  console.error('Terjadi kesalahan saat fetch:', error);
+});
+
+    </script>
+</body>
+</html>
