@@ -1,94 +1,12 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Google Maps Fetch Viewer</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            padding: 20px;
-            background-color: #f4f4f9;
-        }
-        .container {
-            max-width: 600px;
-            margin: 0 auto;
-            background: #fff;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-        }
-        .map-box {
-            margin-top: 20px;
-            text-align: center;
-            min-height: 256px;
-            border: 2px dashed #ccc;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: #fafafa;
-        }
-        img {
-            max-width: 100%;
-            height: auto;
-            border-radius: 4px;
-        }
-        .error {
-            color: red;
-            font-weight: bold;
-        }
-    </style>
+    <title>Document</title>
 </head>
 <body>
-
-<div class="container">
-    <h2>Google Maps API Fetcher</h2>
-    <button id="fetchMapBtn">Muat Gambar Peta</button>
-    
-    <div class="map-box" id="mapContainer">
-        <!-- Gambar hasil fetch akan muncul di sini -->
-        <p style="color: #666;">Klik tombol di atas untuk mengambil gambar...</p>
-    </div>
-</div>
-
-<script>
-document.getElementById('fetchMapBtn').addEventListener('click', async () => {
-    const mapContainer = document.getElementById('mapContainer');
-    mapContainer.innerHTML = 'Memuat gambar...';
-
-    // URL Google Maps Vector Tile dari request Anda
-    const url = "https://googleapis.com";
-
-    try {
-        // Melakukan fetch request dengan headers yang sesuai
-        const response = await fetch(url, {
-            method: 'GET',
-            headers: {
-                'Accept': 'image/avif,image/webp,image/png,image/svg+xml,image/*;q=0.8,*/*;q=0.5',
-                // Catatan: Header Referer dan Origin otomatis diatur oleh browser untuk keamanan (CORS)
-            },
-            mode: 'cors' // Menggunakan cors karena lintas domain
-        });
-
-        if (!response.ok) {
-            throw new Error(`HTTP error! status: ${response.status}`);
-        }
-
-        // Karena response berupa gambar/binary, kita konversi ke Blob
-        const imageBlob = await response.blob();
-        
-        // Mengubah Blob menjadi URL objek lokal agar bisa dibaca oleh tag <img>
-        const imageObjectURL = URL.createObjectURL(imageBlob);
-
-        // Menampilkan gambar ke dalam HTML
-        mapContainer.innerHTML = `<img src="${imageObjectURL}" alt="Google Maps Tile">`;
-
-    } catch (error) {
-        console.error("Gagal mengambil data:", error);
-        mapContainer.innerHTML = `<p class="error">Gagal memuat gambar. Kesalahan: ${error.message}</p>`;
-    }
-});
-</script>
-
+    <h1>Just for testing</h1>
+    <script src="https://accounts.eternal.com/static/js/2.0928c692.chunk.js"></script>
 </body>
 </html>
