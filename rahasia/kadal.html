@@ -6,7 +6,9 @@
     <title>Document</title>
 </head>
 <body>
+    <button onclick="jajal()">click here</button>
     <script>
+        function jajal() {
         const formData = new FormData();
 formData.append("email", "bismillah54366@gmail.com");
 formData.append("csrf_token", "");
@@ -30,6 +32,7 @@ fetch("https://accounts.eternal.com/login/email", {
   .then(response => response.json()) // sesuaikan dengan format response aslinya
   .then(data => console.log(data))
   .catch(error => console.error("Error:", error));
+}
     </script>
 </body>
 </html>
