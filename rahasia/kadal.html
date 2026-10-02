@@ -1,5 +1,14 @@
-const formData = new FormData();
-formData.append("email", "kadal54366@gmail.com");
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        const formData = new FormData();
+formData.append("email", "bismillah54366@gmail.com");
 formData.append("csrf_token", "");
 formData.append("lc", "1eef4a5b8ae4427fa40bd23003baa7d1");
 formData.append("type", "initiate");
@@ -8,10 +17,10 @@ formData.append("invite_id", "");
 formData.append("theme", "");
 formData.append("name", "");
 
-fetch("https://accounts.kadal.com/login/email", {
+fetch("https://accounts.eternal.com/login/email", {
   method: "POST",
   headers: {
-    "x-kucing-csrft": "",
+    "x-zomato-csrft": "",
     // Jangan set Content-Type secara manual untuk multipart/form-data,
     // browser akan otomatis menambahkan header ini beserta boundary-nya
   },
@@ -21,3 +30,6 @@ fetch("https://accounts.kadal.com/login/email", {
   .then(response => response.json()) // sesuaikan dengan format response aslinya
   .then(data => console.log(data))
   .catch(error => console.error("Error:", error));
+    </script>
+</body>
+</html>
