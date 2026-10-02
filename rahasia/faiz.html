@@ -1,13 +1,4 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <script>
-        <!DOCTYPE html>
 <html>
 <body>
 
@@ -18,7 +9,7 @@ function openLogin() {
     const loginChallenge = "TEST-12345";
 
     window.open(
-        "https://accounts.eternal.com/zoauth/login?login_challenge=69e5b14a0c5e4dbf9212eda74a5085e1" +
+        "https://example.com/login?login_challenge=" +
         encodeURIComponent(loginChallenge),
         "loginWindow",
         "width=500,height=700"
@@ -36,8 +27,5 @@ window.addEventListener("message", function (event) {
 });
 </script>
 
-</body>
-</html>
-    </script>
 </body>
 </html>
