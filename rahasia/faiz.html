@@ -2,11 +2,42 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=, initial-scale=1.0">
     <title>Document</title>
 </head>
 <body>
-    <h1>Just for testing</h1>
-    <script src="https://accounts.eternal.com/static/js/2.0928c692.chunk.js"></script>
+    <script>
+        <!DOCTYPE html>
+<html>
+<body>
+
+<button onclick="openLogin()">Open Login</button>
+
+<script>
+function openLogin() {
+    const loginChallenge = "TEST-12345";
+
+    window.open(
+        "https://accounts.eternal.com/zoauth/login?login_challenge=69e5b14a0c5e4dbf9212eda74a5085e1" +
+        encodeURIComponent(loginChallenge),
+        "loginWindow",
+        "width=500,height=700"
+    );
+}
+
+window.addEventListener("message", function (event) {
+    console.log("Message received:");
+    console.log("origin:", event.origin);
+    console.log("data:", event.data);
+
+    if (event.data?.ev === "setLoginChallenge") {
+        console.log("login_challenge:", event.data.lc);
+    }
+});
+</script>
+
+</body>
+</html>
+    </script>
 </body>
 </html>
