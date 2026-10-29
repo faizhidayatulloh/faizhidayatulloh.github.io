@@ -1,9 +1,15 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>CSRF PoC - addCard</title>
-</head>
+<head><meta charset="UTF-8"><title>Simple PostMessage Listener</title></head>
 <body>
- <iframe src="https://accounts.zomato.com/zoauth/consent?consent_challenge=6017283e719e4aed80fc7df13bc3907b"></iframe>
+  <button onclick="window.open('https://accounts.zomato.com/consent?consent_challenge=54366')">
+    Buka popup
+  </button>
+
+  <script>
+    window.addEventListener("message", function (event) {
+      console.log("origin:", event.origin, "data:", event.data);
+    });
+  </script>
 </body>
 </html>
