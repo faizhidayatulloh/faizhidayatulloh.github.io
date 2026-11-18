@@ -10,6 +10,4 @@ async function ambil(){
     });
 
 }
-
-
 ambil()
