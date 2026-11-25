@@ -19,12 +19,15 @@ fetch('https://www.sellingpilot.com/api/channel-integrator/orders/customer/black
     ,"StateCode":"DAY"
     ,"StateName":"Daykundi"
     ,"ZipCode":"34343"
-    ,"Reason":"Other"
+    ,"customerBlacklist.reason.null":"Other"
   })
 })
 .then((response)=>{
   const x = response;
   console.log(x)
+})
+.catch((err)=>{
+  console.log(err)
 })
 </script>
 </body>
