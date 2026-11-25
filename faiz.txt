@@ -1,0 +1,16 @@
+GET /api/channel-integrator/orders/customer/blacklist?PageIndex=1&PageSize=10000&Sort=LastEditDate&Order=DESC HTTP/1.1
+Host: www.sellingpilot.com
+Connection: keep-alive
+sec-ch-ua-platform: "Linux"
+Accept-Language: en-us
+Accept: application/json, text/javascript, */*
+sec-ch-ua: "Chromium";v="158", "Not.A/Brand";v="24", "Google Chrome";v="158"
+User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/158.0.0.0 Safari/537.36
+sec-ch-ua-mobile: ?0
+Sec-Fetch-Site: same-origin
+Sec-Fetch-Mode: cors
+Sec-Fetch-Dest: empty
+Referer: https://www.sellingpilot.com/channel-integrator/orders/customer-blacklist
+Accept-Encoding: gzip, deflate, br, zstd
+Cookie: sellingpilot_i18ncode=en-us; _clck=c1ece3%5E2%5Egbg%5E0%5E2520; idp_lang=en-us; osano_consentmanager_uuid=35552452-89a5-497a-828d-b309869965d8; osano_consentmanager=U0MAdenlUfsRpemuuO8JreiD_nbbLFk_Ep4v1I_LH3OUlD5gcqodbWOxWAZ13l6ELkac2Hu-b39nzdelRKMxbi2mEO4ySo2Mw5ii-ZHOhkr9dVr84k2pyD1bOGJ2_DOe8On6qEqK24d6n4vOGyAt5RbTybq3hIJ1O235gPiDfcd1uaDEFYjmpbrrNL8Nrts5zwKz-zLXwV9SSphiCzP5rhdpnYXe7n5rTYKMVcXKFwBbb9tumBTCTgnvFWGGTkG__P92ib76SYdTWf7LGBd7kt-Uak6Bq_5laRnjgYjFTRPn-Zg-8ZrdLZsn1CB3LOEuCg6LdonNpE8=; _ga=GA1.1.1619134782.1795626893; sellingpilot_main_did=428700bb52226f9cf97932886356ca251939fadc; sellingpilot_main=03d6bc1ae3bee3146592cc0f7f1733cee405bac641868e8fa8d27d42807c7fc2d09f; NVTC=811396808.3333.ff5c77731.1795626885.1795626885.1795646158.2; NID=9D9D0O0O729D9D9D5z; cf_clearance=Cl-c5MQy9cV1YUuS_umlfqyzYk6tWODH2giQMzHkoOYtXixKRhv6dENY5DHCeZ2kn-L5e6bH7MBhEhyd9bhjAyPZHwFgfirb3xy-aoH1WgOcHrwvrW2EP3RHf2YD6TejmmTAmJO22gihKNdvtbbb7aS-SQuGH2rEfU9yk79_RdQ8adgr8_slv1duAgRySC5I7C4N1hCY9RzIGFKhRqgnfImquNOoIWlTfMDBU82FRkdHQzHjmFlQDXpvPShfhkmaMPrKegWrL1q9K55NKK6mX9yEI8Ib998okbGzrbpIBw; __cf_bm=9K54q5_6aypM0_GZTBfX042FRhp5fHPm0Fs1UbYQTcQ-1795646158.3247356-1.0.1.1-HgfQ_8ZzyiqnYB4unShO6.t71DOVIiEGcVNDsJ9sipyuoakvj3o4.TwMoa74ZEQEfwx9gxTKrolM.KF5vYKNvOnc3SFMs1pWXVoddCvuMVue9.nVbBUuGZ3zE5vjDmmx; _clsk=mtum4z%5E1795646684796%5E5%5E1%5Ek.clarity.ms%2Fcollect; _ga_4506PC3CBE=GS2.1.s1795646160$o2$g1$t1795646722$j19$l0$h0; NV_NVTCTIMESTAMP=1795646725
+
